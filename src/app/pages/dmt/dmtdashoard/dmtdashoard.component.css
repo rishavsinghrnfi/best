@@ -1,0 +1,26 @@
+.progressbar {
+    height: 8px;
+    display: block;
+    max-width: 100%;
+}
+
+.table>tbody:before {
+    line-height: 0em !important;
+    content: "_";
+    color: white;
+    display: none !important;
+}
+
+#togglePinBox {
+    display: none;
+}
+
+.myRotate {
+    -moz-transition: transform 1s;
+    -webkit-transition: transform 1s;
+    transition: transform 1s;
+}
+
+.flip {
+    transform: rotate(-180deg);
+}

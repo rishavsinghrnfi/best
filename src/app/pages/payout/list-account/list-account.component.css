@@ -1,0 +1,30 @@
+.event-badge {
+    margin: 16px;
+}
+
+.form-group label,
+label {
+    font-size: 15px;
+    color: #5c1ac3;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding-top: 10px;
+}
+
+.newlabel {
+    padding-top: 0px !important;
+}
+
+.addacc {
+    margin-bottom: 20px;
+}
+.actionBtn{
+    width: 140px !important;
+}
+.closebtn{
+    font-size: 30px;
+    color: #e7515a;
+}
+.centers{
+    text-align: center;
+}

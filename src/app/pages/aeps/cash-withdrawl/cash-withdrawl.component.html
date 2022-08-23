@@ -1,0 +1,103 @@
+<div class="tab-pane fade active show">
+    <blockquote class="blockquote mt-4">
+        <h3 class="aeps-title">Cash Withdrawal</h3>
+        <form [formGroup]="cashwithdrawl">
+            <div class="form-row mb-4">
+                <div class="form-group col-md-6">
+                    <label for="inputAddress">Mobile Number : <span class="alert-error">*</span></label>
+                    <input type="text" maxlength="10" autocomplete="off" OnlyNumber formControlName="mobileNumber" [ngClass]="{ 'is-invalid': (d.mobileNumber.touched || d.mobileNumber.dirty) && d.mobileNumber.invalid }" name="mobileno" class="form-control" placeholder="Enter Mobile Number">
+                    <div *ngIf="(d.mobileNumber.touched || d.mobileNumber.dirty)&& d.mobileNumber.invalid" class="alert-error">
+                        <div *ngIf="d.mobileNumber.errors.required"><small><b>Mobile no is required.</b></small></div>
+                        <div *ngIf="d.mobileNumber.errors.pattern"><small><b>Please enter a valid mobile no.</b></small></div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputAddress">Aadhar Number : <span class="alert-error">*</span></label>
+                    <input type="text" OnlyNumber autocomplete="off" (change)="validateAadhar()" maxlength="12" formControlName="aadharNumber" [ngClass]="{ 'is-invalid': (d.aadharNumber.touched || d.aadharNumber.dirty) && d.aadharNumber.invalid }" name="aadharno" class="form-control"
+                        placeholder="Enter Aadhar Number">
+                    <div *ngIf="(d.aadharNumber.touched || d.aadharNumber.dirty) && d.aadharNumber.invalid" class="alert-error">
+                        <div *ngIf="d.aadharNumber.errors.required"><small><b>Aadhar number is required.</b></small></div>
+                        <div *ngIf="d.aadharNumber.errors.pattern || aadharError"><small><b>Please enter a valid Aadhar number</b></small></div>
+                    </div>
+                    <div *ngIf="!aadharError" class="alert-error">
+                        <small><b>Please enter a valid Aadhar number!</b></small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row mb-4">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Bank Name : <span class="alert-error">*</span></label>
+                    <ng-select2 [ngClass]="{ 'is-invalid': d.bankName.touched && d.bankName.invalid }" formControlName="bankName" [data]="bankLisitng" [placeholder]="'Please select a bank...'">
+                    </ng-select2>
+                    <div *ngIf="d.bankName.touched && d.bankName.invalid" class="alert-error">
+                        <div *ngIf="d.bankName.errors.required"><small><b>Bank Name is required.</b></small></div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Select Device : <span class="alert-error">*</span></label>
+                    <select class="form-control basic" [ngClass]="{ 'is-invalid': (d.deviceid.touched || d.deviceid.dirty) && d.deviceid.invalid }" (change)="getDevice($event)" formControlName="deviceid" placeholder="Please select a device..." #deviceName name="device">
+                        <option value="">Please select a device...</option>
+                        <option *ngFor="let item of device_name_list" [value]="item.name">{{ item.name }}</option>
+                    </select>
+                    <div *ngIf="(d.deviceid.touched || d.deviceid.dirty)  && d.deviceid.invalid" class="alert-error">
+                        <div *ngIf="d.deviceid.errors.required"><small><b>device is required.</b></small></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row mb-4">
+                <div class="form-group col-md-6">
+                    <label for="inputAddress">Amount : <span class="alert-error">*</span></label>
+                    <input type="text" autocomplete="off" OnlyNumber class="form-control" formControlName="amount" value="0" [ngClass]="{ 'is-invalid': (d.amount.touched || d.amount.dirty) && d.amount.invalid }" name="amount" placeholder="Enter Amount">
+                    <div *ngIf="(d.amount.touched || d.amount.dirty) && d.amount.invalid" class="alert-error">
+                        <div *ngIf="d.amount.errors.required"><small><b>Amount is required</b></small></div>
+                        <div *ngIf="d.amount.errors.pattern"><small><b>Only Number allowed.</b></small></div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputAddress">Remark : <span class="alert-error">*</span></label>
+                    <textarea class="form-control" formControlName="requestremarks" name="remarks" placeholder="Enter remarks"></textarea>
+                    <div *ngIf="(d.requestremarks.touched || d.requestremarks.dirty) && d.requestremarks.invalid" class="alert-error">
+                        <div *ngIf="d.requestremarks.errors.required"><small><b>Remark is required</b></small></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="n-chk">
+                <label class="new-control new-checkbox checkbox-primary">
+                  <input type="checkbox" class="new-control-input" formControlName="checkbox" name="checkbox">
+                  <span class="new-control-indicator"></span>I, the undersigned, the holder of the AADHAAR Number hereby give my consent to UNMIXT INDUSTRIES PVT.LTD to obtain my Aaadhaar Number and biometrics for authentication with Unique Identification Authority of India (UIDAI). UNMIXT INDUSTRIES PVT.LTD has informed me that my identity information will be used only for AEPS (Aadhaar Enabled Payment System) Cash Withdrawal purpose and that my biometrics will not be stored/shared by UNMIXT INDUSTRIES PVT.LTD and will be submitted to Central Identity Data Repository (CIDR) only for purpose of authenticating my identity.
+                </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3" [disabled]="!cashwithdrawl.valid" #modal data-toggle='modal' data-target='#transactionStatus'>Scan</button>
+
+            <!-- <button type="submit" class="btn btn-primary mt-3" [disabled]="!cashwithdrawl.valid" (click)="getDevice()">Check Device</button>&nbsp;&nbsp; -->
+            <!-- <button type="submit" class="btn btn-primary mt-3" [disabled]="!cashwithdrawl.valid" (click)="getScannerData()">Scan</button> -->
+        </form>
+    </blockquote>
+</div>
+
+
+<div class="modal fade" id="transactionStatus" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content text-center">
+            <!-- <div class="modal-header">
+                <h4>Transaction Details</h4><span class="close" (click)="closeModal()" data-dismiss="modal">&times;</span>
+            </div> -->
+            <div class="modal-body">
+                <img src="assets/Capture.JPG" class="imgfinger" alt="">
+
+                <form>
+                    <div class="row">
+                    </div>
+                    <div style="text-align: center;">
+                        <button type="submit" class="mt-4 btn btn-primary center-block  mr-2" (click)="getScannerData()" style="text-align: center;">Proceed To Verify</button>
+                        <button type="submit" class="mt-4 btn btn-primary center-block" (click)="closeModal()" data-dismiss="modal" style="text-align: center;">Close</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

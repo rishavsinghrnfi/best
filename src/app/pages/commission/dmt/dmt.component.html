@@ -1,0 +1,108 @@
+<div class="container-fluid">
+    <div class="row layout-top-spacing">
+        <div id="basic" class="col-lg-12 layout-spacing">
+            <div class="widget-content widget-content-area">
+
+                <div class="form-row">
+                    <div class="col-md-6 mx-auto">
+                        <label>Search User By</label><br>
+                        <div class="ng-autocomplete userAutoComData">
+                            <ng-autocomplete [data]="userAutoComData" [searchKeyword]="userKeyword" [debounceTime]="600" (selected)='selectEvent($event)' (inputCleared)="searchCleared()" (inputChanged)='getServerResponse($event)' [itemTemplate]="userItemTemplate" [notFoundTemplate]="userNotFoundTemplate"
+                                [minQueryLength]="5" placeholder="eg 'name', 'firm name', 'firm id'">
+                            </ng-autocomplete>
+
+                            <ng-template #userItemTemplate let-item>
+                                <a [innerHTML]="item.userdetails"></a>
+                            </ng-template>
+
+                            <ng-template #userNotFoundTemplate let-notFound>
+                                <div [innerHTML]="notFound"></div>
+                            </ng-template>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="mt-3" *ngIf="showData">
+
+                    <form [formGroup]="testFm" (ngSubmit)="onSubmit()">
+                        <table class="table">
+                            <thead>
+                                <th>Slot-1</th>
+                                <th>Slot-2</th>
+                                <th>Slot-3</th>
+                                <th>Slot-4</th>
+                                <th>Slot-5</th>
+                                <th>Max-charges</th>
+                            </thead>
+                            <tbody formArrayName="slotArr">
+                                <tr *ngFor="let item of slotArrx; let i = index;" [formArrayName]="i">
+                                    <ng-template ngFor let-columns [ngForOf]="getArrss(item,i).controls" let-j="index" formArrayName="arr">
+                                        <td [formGroupName]="j">
+                                            <div class="text-center mb-1">
+                                                {{columns.get('slab_title')?.value}}
+                                            </div>
+                                            <!-- {{(columns.get('slab_name')?.value)}} <br> -->
+                                            <div>
+                                                <input class="w-100" type="text" formControlName="slab_value">
+                                                <div *ngIf=" columns.get('slab_value')?.invalid" class="alert-error">
+                                                    <div *ngIf="columns.get('slab_value').errors?.required">
+                                                        <small><b>Required.</b></small>
+                                                    </div>
+                                                    <div *ngIf="columns.get('slab_value').errors?.commRangeError">
+                                                        <small><b>{{columns.get('slab_value').errors?.commRangeError}}</b></small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                    </ng-template>
+                                </tr>
+
+                                <!-- <tr>
+                                    <td>
+                                        <span>100-1000</span>
+                                        <input gteValidator type="text" name="charges_imps_1" ngModel [(ngModel)]="obj[0]['charges_imps']" #charges_imps_1="ngModel">
+                                        <div *ngIf="!charges_imps_1.valid && (charges_imps_1.dirty ||charges_imps_1.touched)">
+                                            <div *ngIf="charges_imps_1.errors?.gte">
+                                                The number should be greater than {{charges_imps_1.errors?.requiredValue}}
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span>5001-6000</span>
+                                        <input type="text" name="charges_imps_2" [(ngModel)]="obj[1]['charges_imps']" #charges_imps_2="ngModel">
+                                    </td>
+                                    <td>
+                                        <span>10001-11000</span>
+                                        <input type="text" name="charges_imps_3" [(ngModel)]="obj[2]['charges_imps']" #charges_imps_3="ngModel">
+                                    </td>
+                                    <td>
+                                        <span>15001-16000</span>
+                                        <input type="text" name="charges_imps_4" [(ngModel)]="obj[3]['charges_imps']" #charges_imps_4="ngModel">
+                                    </td>
+                                    <td>
+                                        <span>20001-21000</span>
+                                        <input type="text" name="charges_imps_5" [(ngModel)]="obj[4]['charges_imps']" #charges_imps_5="ngModel">
+                                    </td>
+                                    <td>
+                                        <span>Additional-1000</span>
+                                        <input type="text" name="max_charges" [(ngModel)]="obj[0]['max_charges']" #max_charges="ngModel">
+                                    </td>
+                                </tr> -->
+                            </tbody>
+                        </table>
+                        <h4>Commission in percentage minimum 0.2% and maximum 0.6%.</h4>
+                        <h4>Commission in Rupess minimum Rs.6 and and maximum Rs.30.</h4>
+                        <div class="text-center mt-2">
+                            <button type="submit" class="btn btn-info mr-2" [disabled]="!testFm.valid">Submit</button>
+                            <button type="reset" class="btn btn-danger">Reset</button>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

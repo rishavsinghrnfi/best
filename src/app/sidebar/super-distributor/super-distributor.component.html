@@ -1,0 +1,173 @@
+<ul class="list-unstyled menu-categories" id="accordionExample">
+    <li class="menu">
+        <a routerLink="dashboard" aria-expanded="true" class="dropdown-toggle">
+            <div class="">
+                <span>Dashbaord</span>
+            </div>
+        </a>
+    </li>
+    <li class="menu">
+        <a routerLink="/kyc-upload-documents" class="dropdown-toggle">
+            <div class="">
+                <span>KYC Upload Documents</span>
+            </div>
+        </a>
+    </li>
+    <li class="menu " *ngIf="permission?.is_kyc == '1'">
+        <a href="#account" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <div class="">
+
+                <span>Account</span>
+            </div>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </div>
+        </a>
+        <ul class="collapse submenu list-unstyled" id="account" data-parent="#accordionExample">
+            <li>
+                <a routerLink="/account/partner/list"> Partner</a>
+            </li>
+            <li>
+                <a routerLink="/account/distributor/list"> Distributor</a>
+            </li>
+            <li>
+                <a routerLink="/account/retailer/list"> Retailer</a>
+            </li>
+            <!-- <li>
+                <a routerLink="/account/asm/list"> ASM</a>
+            </li> -->
+        </ul>
+    </li>
+    <li class="menu" *ngIf="permission?.is_kyc == '1'">
+        <a href="#fund" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <div class="">
+                <span>Fund</span>
+            </div>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </div>
+        </a>
+        <ul class="collapse submenu list-unstyled" id="fund" data-parent="#accordionExample">
+            <li>
+                <a routerLink="/fund/create"> Add Fund</a>
+            </li>
+            <li>
+                <a routerLink="/fund/list"> Request Listing</a>
+            </li>
+            <li>
+                <a routerLink="/fund/transfer"> Transfer</a>
+            </li>
+        </ul>
+    </li>
+    <li class="menu" *ngIf="permission?.is_kyc == '1'">
+        <a href="#statement" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <div class="">
+
+                <span>Statement</span>
+            </div>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </div>
+        </a>
+        <ul class="collapse submenu list-unstyled" id="statement" data-parent="#accordionExample">
+            <li>
+                <a routerLink="/statement/dmt"> DMT </a>
+            </li>
+
+            <li>
+                <a routerLink="/statement/recharge"> Recharge</a>
+            </li>
+            <li>
+                <a routerLink="/statement/bbps"> Bill Payment </a>
+            </li>
+            <li>
+                <a routerLink="/statement/licbillpay"> LIC Bill Payment </a>
+            </li>
+            <li>
+                <a routerLink="/statement/matm"> MATM</a>
+            </li>
+            <li>
+                <a routerLink="/statement/aeps"> AEPS </a>
+            </li>
+            <li>
+                <a routerLink="/statement/aadharpay"> Aadhar Pay</a>
+            </li>
+            <li>
+                <a routerLink="/statement/pg"> PG</a>
+            </li>
+            <li>
+                <a routerLink="/statement/wallet"> Wallet</a>
+            </li>
+            <li>
+                <a routerLink="/statement/debitledger"> Debit ledger</a>
+            </li>
+            <li>
+                <a routerLink="/statement/creditledger"> Credit ledger</a>
+            </li>
+            <li>
+                <a routerLink="/statement/credit"> Credit</a>
+            </li>
+            <li>
+                <a routerLink="/statement/debit"> Debit</a>
+            </li>
+        </ul>
+    </li>
+
+
+    <li class="menu menu-heading">
+        <div class="heading"><span>OTHERS</span></div>
+    </li>
+
+
+    <li class="menu">
+        <a routerLink="/about-us" aria-expanded="false" class="dropdown-toggle">
+            <div class="">
+
+                <span>About Us</span>
+            </div>
+        </a>
+    </li>
+    <li class="menu">
+        <a routerLink="/refund-cancellation-policy" aria-expanded="false" class="dropdown-toggle">
+            <div class="">
+
+                <span>Refund & Cancellation Policy</span>
+            </div>
+        </a>
+    </li>
+    <li class="menu">
+        <a routerLink="/term-condition" aria-expanded="false" class="dropdown-toggle">
+            <div class="">
+
+                <span>T&C</span>
+            </div>
+        </a>
+    </li>
+    <li class="menu">
+        <a routerLink="/privacy-policy" aria-expanded="false" class="dropdown-toggle">
+            <div class="">
+
+                <span>Privacy Policy</span>
+            </div>
+        </a>
+    </li>
+    <!-- <li class="menu">
+        <a routerLink="/contact-us" aria-expanded="false" class="dropdown-toggle">
+            <div class="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-book">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                <span>Contact Us</span>
+            </div>
+        </a>
+    </li> -->
+</ul>

@@ -1,0 +1,98 @@
+<div class="layout-px-spacing">
+    <div class="row layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+            <div class="widget">
+                <h5>REGISTRATION</h5>
+                <p class="text-center">Register DMT for mobile no <b>{{mobile}}</b></p>
+                <div class="form_blk">
+                    <form [formGroup]="form" (submit)="onSubmit()">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>First name : <span class="alert-error">*</span></label>
+                                    <input type="text" [ngClass]="{ 'is-invalid':  (f.firstname.touched || f.firstname.dirty) && f.firstname.invalid }" class="form-control" formControlName="firstname" AutocompleteOff placeholder="First name">
+                                    <div *ngIf="(f.firstname.touched || f.firstname.dirty) && f.firstname.invalid" class="alert-error">
+                                        <div *ngIf="f.firstname.errors.required"><small><b>Name is required.</b></small></div>
+                                        <div *ngIf="f.firstname.errors.pattern"><small><b>Only alphabets allowed.</b></small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Last name : <span class="alert-error">*</span></label>
+                                    <input type="text" [ngClass]="{ 'is-invalid': (f.lastname.touched || f.lastname.dirty) && f.lastname.invalid }" class="form-control" formControlName="lastname" AutocompleteOff placeholder="Last name">
+                                    <div *ngIf="(f.lastname.touched || f.lastname.dirty) && f.lastname.invalid" class="alert-error">
+                                        <div *ngIf="f.lastname.errors.required"><small><b>Name is required.</b></small></div>
+                                        <div *ngIf="f.lastname.errors.pattern"><small><b>Only alphabets allowed.</b></small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Date of Birth : <span class="alert-error">*</span></label>
+                                    <input onkeydown="return false" class="form-control" AutocompleteOff [ngClass]="{ 'is-invalid': (f.dob.touched || f.dob.dirty) && f.dob.invalid }" name="dob" id="dob" formControlName="dob" placeholder="yyyy-mm-dd" [minDate]="minDate" [maxDate]="maxDate" #dp="bsDatepicker" bsDatepicker [(ngModel)]="dob">
+                                    <div *ngIf="(f.dob.touched || f.dob.dirty) && f.dob.invalid" class="alert-error">
+                                        <div *ngIf="f.dob.errors.required"><small><b>Date of Birth is required.</b></small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputAddress">Address : <span class="alert-error">*</span></label>
+                                <input type="text" AutocompleteOff formControlName="address" [ngClass]="{ 'is-invalid': (f.address.touched || f.address.dirty) && f.address.invalid }" name="address" class="form-control" placeholder="Enter address">
+                                <div *ngIf="(f.address.touched || f.address.dirty) && f.address.invalid" class="alert-error">
+                                    <div *ngIf="f.address.errors.required"><small><b>Address is required.</b></small></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputAddress">GST State : <span class="alert-error">*</span></label>
+                                <ng-select2   [ngClass]="{ 'is-invalid': f.gst_state.touched && f.gst_state.invalid }" formControlName="gst_state" AutocompleteOff [data]="gstStateList" [placeholder]="'Please select a gst state...'">
+                                </ng-select2>
+                                <div *ngIf="f.gst_state.touched && f.gst_state.invalid" class="alert-error">
+                                    <div *ngIf="f.gst_state.errors.required"><small><b>GST State is required.</b></small></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Pincode : <span class="alert-error">*</span></label>
+                                    <input [ngClass]="{ 'is-invalid': (f.pincode.touched || f.pincode.dirty) && f.pincode.invalid }" OnlyNumber maxlength="6" class="form-control" formControlName="pincode" AutocompleteOff placeholder="Pincode" />
+                                    <div *ngIf="(f.pincode.touched || f.pincode.dirty) && f.pincode.invalid" class="alert-error">
+                                        <div *ngIf="f.pincode.errors.required"><small><b>Pincode is required.</b></small></div>
+                                        <div *ngIf="f.pincode.errors.pattern"><small><b>Please enter a valid pincode</b></small></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>OTP : <span class="alert-error">*</span></label>
+                                    <div class="input-group mb-2 mr-sm-2">
+                                        <input type="text" [ngClass]="{ 'is-invalid':  f.otp.touched && f.otp.invalid }" class="form-control" OnlyNumber maxlength="6" formControlName="otp" AutocompleteOff placeholder="One time password (OTP)">
+                                        <div class="input-group-prepend">
+                                            <button class="btn btn-primary" (click)="resendOtp()"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-repeat"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg></button>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="f.otp.touched && f.otp.invalid" class="alert-error">
+                                        <div *ngIf="f.otp.errors.required"><small><b>OTP is required.</b></small></div>
+                                        <div *ngIf="f.otp.errors.pattern"><small><b>Only number allowed.</b></small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+.mainSection {
+    margin-top: 30px;
+    padding: 20px 20px;
+    border-radius: 15px;
+    box-shadow: 2px 10px 18px #d6c3c3;
+}
+
+.mainSection label {
+    color: #212529c2;
+}
+
+
+/* .mainSection .form-control{
+    height: 30px;
+}
+.mainSection .form-control[type="checkbox"]{
+    width: 20px;
+    height: 20px;
+}
+.mainSection .fa-trash{
+    color: #dc3545;
+    cursor: pointer;
+    font-size: 20px;
+    transition: all .2s ease-in-out;
+}
+.mainSection .fa-trash:hover{
+    transform: scale(1.5);
+} */
+
+.pennyBox input {
+    display: inline;
+    margin-left: 20px;
+}
+
+.pennyBox .titl {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+}
+
+.usercheck {
+    width: 85px;
+}
+
+.ng-autocomplete {
+    min-width: 200px !important;
+    max-width: 600px !important;
+    width: auto !important;
+}
+
+th {
+    text-align: center;
+}

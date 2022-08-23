@@ -1,0 +1,281 @@
+<ul class="list-unstyled menu-categories" id="accordionExample">
+    <li class="menu">
+        <a routerLink="dashboard" aria-expanded="true" class="dropdown-toggle">
+            <div class="">
+
+                <span>Dashbaord</span>
+            </div>
+        </a>
+    </li>
+    <li class="menu">
+        <a routerLink="/kyc-upload-documents" class="dropdown-toggle">
+            <div class="">
+
+                <span>KYC Upload Documents</span>
+            </div>
+        </a>
+    </li>
+    <li class="menu" *ngIf="(permission.dmt && permission?.is_kyc == '1')">
+        <a href="#dmt" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <div class="">
+
+                <span>DMT</span>
+            </div>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </div>
+        </a>
+        <ul class="collapse submenu list-unstyled" id="dmt" data-parent="#accordionExample">
+            <li>
+                <a routerLink="/dmt"> DMT </a>
+            </li>
+            <!-- <li>
+                <a routerLink="/dmt/transactions">DMT Transaction </a>
+            </li> -->
+            <li>
+                <a routerLink="/statement/dmt"> Statement </a>
+            </li>
+        </ul>
+    </li>
+    <li class="menu" *ngIf="(permission.payout && permission?.is_kyc == '1')">
+        <a href="#payout" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <div class="">
+
+                <span>Payout</span>
+            </div>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </div>
+        </a>
+        <ul class="collapse submenu list-unstyled" id="payout" data-parent="#accordionExample">
+            <li>
+                <a routerLink="/payout"> Do Sattlement </a>
+            </li>
+            <li>
+                <a routerLink="/payout/status-enquiry">Sattlement Transactions</a>
+            </li>
+        </ul>
+    </li>
+    <li class="menu" *ngIf="(permission.aeps && permission?.is_kyc == '1')">
+        <a href="#aeps" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <div class="">
+
+                <span>AEPS</span>
+            </div>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </div>
+        </a>
+        <ul class="collapse submenu list-unstyled" id="aeps" data-parent="#accordionExample">
+            <li>
+                <a routerLink="/aeps/cash-withdrawal"> CASH WITHDRAWAL </a>
+            </li>
+            <li>
+                <a routerLink="/aeps/balance-enquiry"> BALANCE ENQUIRY </a>
+            </li>
+            <li>
+                <a routerLink="/aeps/mini-statement"> MINI STATEMENT </a>
+            </li>
+            <li>
+                <a routerLink="/aeps/aadhar-pay"> AADHAAR PAY </a>
+            </li>
+            <li>
+                <a routerLink="/statement/aeps"> AEPS Statement</a>
+            </li>
+            <li>
+                <a routerLink="/statement/aadharpay"> Aadhar Pay Statement</a>
+            </li>
+            <li>
+                <a routerLink="/statement/mini-statement-txn">Mini Statement Txn</a>
+            </li>
+            <li>
+                <a routerLink="/aeps/scanner-setting"> Scanner Setting </a>
+            </li>
+        </ul>
+    </li>
+    <li class="menu" *ngIf="(permission.dmt && permission?.is_kyc == '1')">
+        <a href="#Recharge" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <div class="">
+
+                <span>Recharge</span>
+            </div>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </div>
+        </a>
+        <ul class="collapse submenu list-unstyled" id="Recharge" data-parent="#accordionExample">
+            <li>
+                <a routerLink="/recharge"> Recharge </a>
+            </li>
+            <li>
+                <a routerLink="/statement/recharge">Statement</a>
+            </li>
+        </ul>
+    </li>
+    <li class="menu" *ngIf="(permission.dmt && permission?.is_kyc == '1')">
+        <a href="#BillPay" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <div class="">
+
+                <span>Bill Pay</span>
+            </div>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </div>
+        </a>
+        <ul class="collapse submenu list-unstyled" id="BillPay" data-parent="#accordionExample">
+            <li>
+                <a routerLink="bbps"> Bill Pay </a>
+            </li>
+            <li>
+                <a routerLink="/statement/bbps">Statement</a>
+            </li>
+        </ul>
+    </li>
+    <li class="menu" *ngIf="(permission.dmt && permission?.is_kyc == '1')">
+        <a href="#paytmWallet" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <div class="">
+
+                <span>Wallet</span>
+            </div>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </div>
+        </a>
+        <ul class="collapse submenu list-unstyled" id="paytmWallet" data-parent="#accordionExample">
+            <li>
+                <a routerLink="paytm-wallet"> Paytm </a>
+            </li>
+            <li>
+                <a routerLink="/mobikwik-wallet">Mobikwik</a>
+            </li>
+            <li>
+                <a routerLink="/statement/wallet">Wallet Statement </a>
+            </li>
+        </ul>
+    </li>
+    <li class="menu" *ngIf="permission?.is_kyc == '1'">
+        <a href="#fund" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <div class="">
+                <span>More</span>
+            </div>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </div>
+        </a>
+        <ul class="collapse submenu list-unstyled" id="fund" data-parent="#accordionExample">
+            <li class="sub-sub-submenu-list">
+                <a data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" routerLink="/fund/create">PG</a>
+                <ul class="collapse list-unstyled sub-submenu eq-animated eq-fadeInUp" id="PG" data-parent="#more">
+                    <li>
+                        <a routerLink="payment-gateway"> PG </a>
+                    </li>
+                    <li>
+                        <a routerLink="/statement/pg">PG Statement </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="sub-sub-submenu-list">
+                <a data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" routerLink="/fund/create">Fund</a>
+                <ul class="collapse list-unstyled sub-submenu eq-animated eq-fadeInUp" id="fund" data-parent="#more">
+                    <li>
+                        <a routerLink="/fund/create"> Add Fund</a>
+                    </li>
+                    <li>
+                        <a routerLink="/fund/list"> Request Listing</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="sub-sub-submenu-list">
+                <a data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" routerLink="/fund/create">Credit card bill</a>
+                <ul class="collapse list-unstyled sub-submenu eq-animated eq-fadeInUp" id="fund" data-parent="#more">
+                    <li>
+                        <a routerLink="/credit-card/bill"> Credit Card Bill</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="sub-sub-submenu-list">
+                <a data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Statement</a>
+                <ul class="collapse list-unstyled sub-submenu eq-animated eq-fadeInUp" id="fund" data-parent="#more">
+
+                    <li>
+                        <a routerLink="/statement/matm"> MATM</a>
+                    </li>
+
+                    <li>
+                        <a routerLink="/statement/debitledger"> Debit ledger</a>
+                    </li>
+                    <li>
+                        <a routerLink="/statement/creditledger"> Credit ledger</a>
+                    </li>
+                    <li>
+                        <a routerLink="/statement/credit"> Credit</a>
+                    </li>
+                    <li>
+                        <a routerLink="/statement/debit"> Debit</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="sub-sub-submenu-list">
+                <a data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" routerLink="/fund/create">Track Complaint</a>
+                <ul class="collapse list-unstyled sub-submenu eq-animated eq-fadeInUp" id="fund" data-parent="#more">
+                    <li>
+                        <a routerLink="/complaint"> Track Complaint</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+
+
+    <li class="menu" *ngIf="permission?.is_kyc == '1'">
+        <a href="#others" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <div class="">
+
+                <span>Others</span>
+            </div>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </div>
+        </a>
+        <ul class="collapse submenu list-unstyled" id="others" data-parent="#accordionExample">
+
+            <li>
+                <a routerLink="/about-us"> About Us</a>
+            </li>
+
+            <li>
+                <a routerLink="/refund-cancellation-policy"> Refund & Cancellation</a>
+            </li>
+            <li>
+                <a routerLink="/term-condition"> T&C</a>
+            </li>
+            <li>
+                <a routerLink="/privacy-policy"> Privacy Policy</a>
+            </li>
+
+        </ul>
+    </li>
+
+
+
+
+</ul>

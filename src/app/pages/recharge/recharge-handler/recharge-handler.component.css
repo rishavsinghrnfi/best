@@ -1,0 +1,34 @@
+p .cir {
+    margin-top: 0;
+    margin-bottom: 0.625rem;
+    color: #3144ef !important;
+    font-weight: 600 !important;
+}
+
+.browse{
+    margin-top: 0;
+    margin-bottom: 0.625rem;
+    color: #3144ef !important;
+    font-weight: 600 !important;
+}
+.modal-dialog {
+    max-width: 650px !important;
+    margin: 1.75rem auto;
+}
+.modal-content .modal-body a:not(.btn) {
+    color: #60637b !important;
+    font-weight: 600;
+}
+.card .card-body p:not(:last-child) {
+    margin-bottom: 0;
+}
+.badge{
+    line-height: 2.4;
+    width: 90px;
+}
+.card{
+    cursor: pointer !important;
+}
+.statushide{
+    display: none;
+}

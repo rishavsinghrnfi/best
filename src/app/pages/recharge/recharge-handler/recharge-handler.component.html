@@ -1,0 +1,213 @@
+<div class="col-lg-12 col-12 layout-spacing mt-5">
+    <div class="statbox widget box box-shadow">
+        <div class="widget-header">
+            <div class="row">
+                <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                    <h4>Recharge</h4>
+                </div>
+            </div>
+        </div>
+        <div class="widget-content border-tab">
+
+            <ul class="nav nav-tabs mt-3" id="border-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="prepaid-tab" data-toggle="tab" href="#prepaid" role="tab" aria-controls="prepaid" aria-selected="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone-call"><path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94m-1 7.98v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> Prepaid</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="dth-tab" data-toggle="tab" (click)="getDthOperator()" href="#dth" role="tab" aria-controls="dth" aria-selected="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-radio"><circle cx="12" cy="12" r="2"></circle><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"></path></svg> DTH</a>
+                </li>
+            </ul>
+            <div class="tab-content mb-4">
+                <div class="tab-pane fade show active" id="prepaid" role="tabpanel" aria-labelledby="prepaid-tab">
+                    <form [formGroup]="prepaid" (ngSubmit)="onPrepaidSubmit()">
+                        <h4 class="mb-4">{{rechargeTitle}}</h4>
+                        <div class="row my-4">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <!-- (keyup)="getHLRInfo($event)" -->
+                                    <label for="inputAddress">Mobile Number : <span class="alert-error">*</span></label>
+                                    <input type="text" formControlName="mobile" [ngClass]="{ 'is-invalid': (p.mobile.touched || p.mobile.dirty) && p.mobile.invalid }" name="mobileno" class="form-control" placeholder="Enter Mobile Number">
+                                    <div *ngIf="(p.mobile.touched || p.mobile.dirty) && p.mobile.invalid" class="alert-error">
+                                        <div *ngIf="p.mobile.errors.required"><small><b>Mobile no is required.</b></small></div>
+                                        <div *ngIf="p.mobile.errors.pattern"><small><b>Please enter a valid mobile no.</b></small></div>
+                                    </div>
+                                    <div class="text-right" *ngIf="HLRinfo.circle">
+                                        <p class="cir">Prepaid - {{HLRinfo.circle}}</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputEmail4">Operator : <span class="alert-error">*</span></label>
+                                    <ng-select2 formControlName="operator" [(ngModel)]="value" [data]="prepaidOperatorLisitng" [ngClass]="{ 'is-invalid': p.operator.touched && p.operator.invalid }" [placeholder]="'Please select a operator...'">
+                                    </ng-select2>
+                                    <div *ngIf="p.operator.touched && p.operator.invalid" class="alert-error">
+                                        <div *ngIf="p.operator.errors.required"><small><b>Operator is required.</b></small></div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputAddress">Amount : <span class="alert-error">*</span></label>
+                                    <input type="text" formControlName="amount" [ngClass]="{ 'is-invalid': p.amount.touched && p.amount.invalid }" name="amount" class="form-control" placeholder="Enter amount">
+                                    <div *ngIf="p.amount.touched && p.amount.invalid" class="alert-error">
+                                        <div *ngIf="p.amount.errors.required"><small><b>Amount is required.</b></small></div>
+                                        <div *ngIf="p.amount.errors.pattern"><small><b>Please enter a valid amount.</b></small></div>
+                                    </div>
+                                    <div class="text-right" *ngIf="browseplans"><a href="javascript:void(0);" (click)="browseplan()" class="browse">Browse Plan</a></div>
+                                </div>
+
+                                <button type="submit" [disabled]="!prepaid.valid" *ngIf="!onPrepaidInvoiceObj" class="btn btn-primary">Submit</button>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="dth" role="tabpanel" aria-labelledby="dth-tab">
+                    <form [formGroup]="dth" (submit)="onDthSubmit()">
+                        <!-- <h4 class="mb-4">Recharge Your DTH </h4> -->
+                        <div class="row my-2">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="inputEmail4">Operator : <span class="alert-error">*</span></label>
+                                    <ng-select2 [ngClass]="{ 'is-invalid': d.operator.touched && d.operator.invalid }" formControlName="operator" [data]="dthOperatorLisitng" [placeholder]="'Please select a operator...'">
+                                    </ng-select2>
+                                    <div *ngIf="d.operator.touched && d.operator.invalid" class="alert-error">
+                                        <div *ngIf="d.operator.errors.required"><small><b>Operator is required.</b></small></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputAddress">C/A Number : <span class="alert-error">*</span></label>
+                                    <input type="text" formControlName="canumber" [ngClass]="{ 'is-invalid': d.canumber.touched && d.canumber.invalid }" name="canumber" class="form-control" placeholder="Enter C/A Number">
+                                    <div *ngIf="d.canumber.touched && d.canumber.invalid" class="alert-error">
+                                        <div *ngIf="d.canumber.errors.required"><small><b>C/A Number is required.</b></small></div>
+                                        <div *ngIf="d.canumber.errors.pattern"><small><b>Please enter a valid C/A Number.</b></small></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputAddress">Amount : <span class="alert-error">*</span></label>
+                                    <input type="text" formControlName="amount" [ngClass]="{ 'is-invalid': d.amount.touched && d.amount.invalid }" name="amount" class="form-control" placeholder="Enter amount">
+                                    <div *ngIf="d.amount.touched && d.amount.invalid" class="alert-error">
+                                        <div *ngIf="d.amount.errors.required"><small><b>Amount is required.</b></small></div>
+                                        <div *ngIf="d.amount.errors.pattern"><small><b>Please enter a valid amount.</b></small></div>
+                                    </div>
+                                </div>
+                                <button type="submit" [disabled]="!dth.valid" *ngIf="!onDthInvoiceObj" class="btn btn-primary">Submit</button>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="status" role="tabpanel" aria-labelledby="status-tab">
+                    <form [formGroup]="status" (submit)="checkStatus()">
+                        <!-- <h4 class="mb-4">Recharge Your DTH </h4> -->
+                        <div class="row my-2">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="inputAddress">Reference ID : <span class="alert-error">*</span></label>
+                                    <input type="text" formControlName="ref" [ngClass]="{ 'is-invalid': s.ref.touched && s.ref.invalid }" name="ref" class="form-control" placeholder="Enter Reference ID">
+                                    <div *ngIf="s.ref.touched && s.ref.invalid" class="alert-error">
+                                        <div *ngIf="s.ref.errors.required"><small><b>Reference ID is required.</b></small></div>
+                                        <div *ngIf="s.ref.errors.pattern"><small><b>Please enter a valid Reference ID.</b></small></div>
+                                    </div>
+                                </div>
+                                <button type="submit" [disabled]="!status.valid" class="btn btn-primary">Submit</button>
+
+                                <div class="table-responsive" *ngIf="statusData != null">
+                                    <table class="table table-bordered mt-4">
+                                        <tr>
+                                            <th>TXN ID</th>
+                                            <td>{{statusData.txnid}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Operator ID</th>
+                                            <td>{{statusData.operatorid}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Operator Name</th>
+                                            <td>{{statusData.operatorname}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>C/A Number</th>
+                                            <td>{{statusData.canumber}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Amount</th>
+                                            <td>{{statusData.amount | currency:"INR"}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Commission</th>
+                                            <td>{{statusData.comm | currency:"INR"}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>TDS</th>
+                                            <td>{{statusData.tds | currency:"INR"}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Date</th>
+                                            <td>{{statusData.dateadded | date:"MMM d, y"}}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<button type="button" #modal data-toggle='modal' data-target='#browseplans' class='btn btn-primary statushide'>Browse Plan</button>
+<div class="modal fade" id="browseplans" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Select Amount Or Search Plan</h4><span class="close" data-dismiss="modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="widget-content widget-content-area simple-tab">
+                    <ul class="nav nav-tabs  mb-3 mt-3" id="simpletab" role="tablist">
+                        <li class="nav-item" *ngFor="let title of rechargePlan; let num = index">
+                            <a class="nav-link" [ngClass]="{'active':num == 1}" id="dt-tab" data-toggle="tab" href="#tab{{num}}" role="tab" aria-controls="dt" aria-selected="true">{{title.heading}}</a>
+                        </li>
+
+                    </ul>
+                    <div class="tab-content" id="simpletabContent">
+                        <div class="tab-pane fade" [ngClass]="{'show active':num == 1}" *ngFor="let title of rechargePlan; let num = index" id="tab{{num}}" role="tabpanel" aria-labelledby="dt-tab">
+                            <div class="card component-card_8" *ngFor="let data of title.child" (click)="setAmount(data.rs)">
+                                <div class="card-body">
+                                    <div class="progress-order">
+                                        <div class="progress-order-header">
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-6 col-12">
+                                                    <h4>Validity: {{data.validity}}</h4>
+                                                </div>
+                                                <div class="col-md-6 pl-0 col-sm-6 col-12 text-right">
+                                                    <span class="badge badge-info">{{data.rs | currency:"INR"}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="progress-order-body">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <!-- <p>Data: 75 GB</p> -->
+                                                    <p>{{data.desc}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ri-custom-mdl [id]="mdlId">
+    <app-slip-print [riCustomMdlId]="mdlId" [recepitListObj]="invoiceObj" (closeCallBack)="slipClose()"></app-slip-print>
+</ri-custom-mdl>

@@ -1,0 +1,73 @@
+<div class="container-fluid">
+    <div class="row layout-top-spacing">
+        <div id="basic" class="col-lg-12 layout-spacing">
+            <div class="widget-content widget-content-area">
+                <div class="row">
+                    <div class="col-md-6 mx-auto">
+                        <label>Select User</label>
+                        <div class="form-group">
+                            <div class="ng-autocomplete">
+                                <ng-autocomplete [data]="userDtLst" [searchKeyword]="keyword"
+                                    (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)'
+                                    [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate"
+                                    [debounceTime]="600" [minQueryLength]="5"
+                                    placeholder="Search User. eg 'name', 'firm name', 'firm id'">
+                                </ng-autocomplete>
+
+                                <ng-template #itemTemplate let-item>
+                                    <a href="javascript:void(0)">
+                                        <span [innerHTML]="item.name"></span> |
+                                        <span [innerHTML]="item.username"></span> |
+                                        <span [innerHTML]="item.firmname"></span>
+                                    </a>
+                                </ng-template>
+
+                                <ng-template #notFoundTemplate let-notFound>
+                                    <div [innerHTML]="notFound"></div>
+                                </ng-template>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-3" *ngIf="showData">
+                    <div [formGroup]="mainForm">
+                        <div formArrayName="mainArr" class="row">
+                            <div *ngFor="let item of getMainArr.controls; index as i"
+                                class="col-sm-12 col-md-8 col-lg-5 mx-auto mainSection">
+                                <div [formArrayName]="i">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-4"
+                                            *ngFor="let form of getArr(item,i).controls; index as j;"
+                                            formArrayName="arr">
+                                            <div [formGroupName]="j">
+                                                <label class="font-weight-bold">{{getPayType(form.get('name')?.value)}}</label>
+                                                <input type="number"
+                                                    [ngClass]="{'is-invalid': form.get('value')?.invalid}"
+                                                    placeholder="Enter Value" class="form-control" placeholder=""
+                                                    formControlName="value">
+                                                <div *ngIf="form.get('value')?.touched || form.get('value')?.invalid"
+                                                    class="alert-error">
+                                                    <div *ngIf="form.get('value')?.errors?.required">
+                                                        <small><b>Required.</b></small>
+                                                    </div>
+                                                    <div *ngIf="form.get('value')?.errors?.min">
+                                                        <small><b>Minimum add 0.</b></small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <button type="button" class="btn btn-primary" [disabled]="!mainForm.valid"
+                                (click)="onSubmit()">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

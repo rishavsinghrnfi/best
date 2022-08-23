@@ -1,0 +1,169 @@
+<div class="layout-px-spacing">
+    <div class="row layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+            <div class="widget" *ngIf="firstPage">
+                <h5>Credit Card Bill</h5>
+                <form [formGroup]="form" class="mt-3" (submit)="onSubmit()">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputAddress">Credit card Number : <span class="alert-error">*</span></label>
+                            <input type="text" formControlName="CreditCardNo" [ngClass]="{ 'is-invalid': f.CreditCardNo.touched && f.CreditCardNo.invalid }" name="txnid" class="form-control" placeholder="Credit Card Number" minlength="16" maxlength="16">
+                            <div *ngIf="f.CreditCardNo.dirty && f.CreditCardNo.invalid" class="alert-error">
+                                <div *ngIf="f.CreditCardNo.errors?.required"><small><b>Credit Card is required.</b></small></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row" *ngIf="getData">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Card Type : <span class="alert-error">*</span></label>
+                            <input type="text" formControlName="Creditcardtype" readonly [ngClass]="{ 'is-invalid': f.Creditcardtype.touched && f.Creditcardtype.invalid }" name="txnid" class="form-control" placeholder="Credit Card Type">
+                            <div *ngIf="f.Creditcardtype.touched && f.Creditcardtype.invalid" class="alert-error">
+                                <div *ngIf="f.Creditcardtype.errors?.required"><small><b>Credit Card Type is required.</b></small></div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputAddress">Credit Card Number : <span class="alert-error">*</span></label>
+                            <input type="text" formControlName="cmfCreditCardNo" [ngClass]="{ 'is-invalid': f.cmfCreditCardNo.touched && f.cmfCreditCardNo.invalid }" name="txnid" class="form-control" placeholder="Credit Card Number" minlength="16" maxlength="16" (keyupdowm)="confirmCreditnumber()"
+                                (keyup)="confirmCreditnumber()">
+                            <div *ngIf="f.cmfCreditCardNo.touched && f.cmfCreditCardNo.invalid" class="alert-error">
+                                <div *ngIf="f.cmfCreditCardNo.errors?.required"><small><b>Credit Card Number is required.</b></small>
+                                </div>
+                                {{ConfirmationFailed}}
+                                <div *ngIf="ConfirmationFailed" class="alert-errror">Credit Card Number did not match</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row " *ngIf="getData">
+
+                        <div class="form-group col-md-6">
+                            <label for="inputAddress">Card Holder Name : <span class="alert-error">*</span></label>
+                            <input type="text" formControlName="cardholdeName" [ngClass]="{ 'is-invalid': f.cardholdeName.touched && f.cardholdeName.invalid }" name="txnid" class="form-control" placeholder="Card Holder Name">
+                            <div *ngIf="f.cardholdeName.touched && f.cardholdeName.invalid" class="alert-error">
+                                <div *ngIf="f.cardholdeName.errors?.required"><small><b>Card Holder Name is required.</b></small></div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputAddress">Mobile Number : <span class="alert-error">*</span></label>
+                            <input type="text" formControlName="mobileNumber" [ngClass]="{ 'is-invalid': f.mobileNumber.touched && f.mobileNumber.invalid }" name="depositedbranch" class="form-control" placeholder="Enter Mobile Number" minlength="10" maxlength="10">
+                            <div *ngIf="f.mobileNumber.touched && f.mobileNumber.invalid" class="alert-error">
+                                <div *ngIf="f.mobileNumber.errors?.required"><small><b>Transaction ID is required.</b></small></div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="form-row" *ngIf="getData">
+
+
+                        <div class="form-group col-md-6">
+                            <label for="inputAddress">Amount : <span class="alert-error">*</span></label>
+                            <input type="text" formControlName="amount" [ngClass]="{ 'is-invalid': f.amount.touched && f.amount.invalid }" name="amount" class="form-control" placeholder="Enter amount">
+                            <div *ngIf="f.amount.touched && f.amount.invalid" class="alert-error">
+                                <div *ngIf="f.amount.errors?.required"><small><b>Amount is required.</b></small></div>
+                                <div *ngIf="f.amount.errors?.pattern"><small><b>Please fill a valid amount</b></small></div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <button *ngIf="getData" type="submit" class="btn btn-primary mt-3" [disabled]="!form.valid">Generate
+          OTP</button>
+                </form>
+            </div>
+            <div class="widget" *ngIf="secondPage">
+                <h5>Submit OTP</h5>
+                <div class="form-row ">
+                    <div class="form-group col-md-6">
+                        CREDIT CARD NUMBER
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{form.controls.CreditCardNo.value}}
+                    </div>
+                </div>
+                <div class="form-row ">
+                    <div class="form-group col-md-6">
+                        CARD HOLDER NAME
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{form.controls.cardholdeName.value}}
+                    </div>
+                </div>
+                <div class="form-row ">
+                    <div class="form-group col-md-6">
+                        MOBILE NUMBER
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{form.controls.mobileNumber.value}}
+                    </div>
+                </div>
+                <div class="form-row ">
+                    <div class="form-group col-md-6">
+                        AMOUNT
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{form.controls.amount.value}}
+                    </div>
+                </div>
+                <div class="form-row ">
+                    <div class="form-group col-md-6">
+                        OTP
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="text" placeholder="OTP" minlength="6" maxlength="6" [(ngModel)]="OTPnumber">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3" (click)="paybill()">Submit</button>
+            </div>
+            <div *ngIf="thirdPage">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">TXN DATE TIME</th>
+                            <th scope="col">CSP SHOP NAME</th>
+                            <th scope="col">CUSTOMER MOBILE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{Paydata.dateadded}}</td>
+                            <td>{{data.firmname}}</td>
+                            <td>{{Paydata.mobile}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">TXNID</th>
+                            <th scope="col">NAME</th>
+                            <th scope="col">MOBILE</th>
+                            <th scope="col">NETWORK</th>
+                            <th scope="col">CARD NUMBER</th>
+                            <th scope="col">AMOUNT</th>
+                            <th scope="col">STATUS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>{{Paydata.txnid}}</th>
+                            <td>{{Paydata.name}}</td>
+                            <td>{{Paydata.mobile}}</td>
+                            <td>{{Paydata.network}}</td>
+                            <td>{{Paydata.card_number}}</td>
+                            <td>{{Paydata.amount}}</td>
+                            <td>{{Paydata.status}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <button type="submit" class="btn btn-primary mt-3" (click)="printInvoice()">Print Receipt</button>
+
+            </div>
+        </div>
+    </div>
+
+    <ri-custom-mdl [id]="mdlId">
+        <app-slip-print [riCustomMdlId]="mdlId" [recepitListObj]="Paydata" (closeCallBack)="slipClose()"></app-slip-print>
+    </ri-custom-mdl>

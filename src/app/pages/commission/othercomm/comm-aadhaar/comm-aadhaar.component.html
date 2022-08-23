@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="">
+        <!-- <h1>Aadhaar Pay</h1> -->
+        <div class="form-row">
+            <div class="col-md-6 mx-auto">
+                <label>Search User By</label><br>
+                <div class="ng-autocomplete userAutoComData">
+                    <ng-autocomplete [data]="userAutoComData" [searchKeyword]="userKeyword" [debounceTime]="600"
+                        (selected)='selectEvent($event)' (inputCleared)="searchCleared()"
+                        (inputChanged)='getServerResponse($event)' [itemTemplate]="userItemTemplate"
+                        [notFoundTemplate]="userNotFoundTemplate" [minQueryLength]="5"
+                        placeholder="eg 'name', 'firm name', 'firm id'">
+                    </ng-autocomplete>
+
+                    <ng-template #userItemTemplate let-item>
+                        <a [innerHTML]="item.userdetails"></a>
+                    </ng-template>
+
+                    <ng-template #userNotFoundTemplate let-notFound>
+                        <div [innerHTML]="notFound"></div>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="showData" class="row">
+            <div class="col-md-6 mx-auto">
+                <div [formGroup]="mainForm">
+                    <div class="row">
+                        <div class="col-12"> <label class="font-weight-bold">value</label>
+                            <input type="number" [ngClass]="{'is-invalid': mainForm.get('value')?.invalid}"
+                                placeholder="Enter Value" class="form-control" placeholder="" formControlName="value">
+                            <div *ngIf="mainForm.get('value')?.touched || mainForm.get('value')?.invalid" class="alert-error">
+                                <div *ngIf="mainForm.get('value')?.errors?.min">
+                                    <small><b>Minimum add 0.</b></small>
+                                </div>
+                            </div>
+                            <div *ngIf="mainForm.get('value')?.errors?.required">
+                                <small><b>required.</b></small>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="text-center mt-3">
+                                <button type="button" class="btn btn-primary" [disabled]="!mainForm.valid"
+                                    (click)="onSubmit()">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

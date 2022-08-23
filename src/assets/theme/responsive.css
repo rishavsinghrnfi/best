@@ -1,0 +1,177 @@
+@media only screen and (min-width: 1400px) {
+    .userdetail {
+        font-size: 10px;
+        color: #fff;
+
+    }
+}
+
+@media (max-width:1280px) {}
+
+@media (max-width:1024px) {
+    .topbar-nav.header {
+        top: 95px !important;
+    }
+
+    .business {
+        margin-top: 3em !important;
+    }
+
+
+}
+
+@media (max-width:980px) {
+    .custom-cards .card {
+        margin-top: 0;
+    }
+
+    .top-txt {
+        display: none;
+    }
+
+    .navbar .sidebarCollapse svg {
+        color: #010159;
+    }
+
+    .layout-top-spacing {
+        margin-top: 0;
+    }
+}
+
+@media (max-width:823px) {}
+
+@media (max-width:768px) {
+    .header-container .navbar-nav.theme-brand {
+        width: 255px !important;
+    }
+    .nav-top li{margin-left:0!important;}
+ 
+}
+
+@media (max-width: 736px) {
+    .top-txt {
+        width: calc(50% - 50px)
+    }
+
+    .custom-cards .card {
+        margin-top: 10px
+    }
+
+    .navbar .sidebarCollapse svg {
+        color: #ef0290
+    }
+    .userdetail {
+        display: none !important;
+    }
+}
+
+@media (max-width:667px) {
+    .navbar-item.nav-top{left:0}
+}
+
+@media (max-width:640px) {
+    .top-txt {
+        display: none;
+    }
+}
+
+@media (max-width:568px) {
+    .header-container .navbar-nav.theme-brand .theme-logo img {
+        width: 86px !important;
+    }
+
+    .header-container .navbar-nav.theme-brand {
+        width: 165px !important;
+    }
+
+    .widget-chart-one .widget-heading .tabs a {
+        font-size: 11px;
+        padding: 5px 2px;
+        letter-spacing: 0;
+    }
+
+    .widget-chart-one .widget-heading {
+        display: block;
+    }
+
+    .qLink a {
+        width: 44% !important;
+        margin: 10px !important;
+    }
+
+    .widget-chart-one .widget-heading .tabs li {
+        margin-bottom: 5px;
+        margin-top: 10px;
+    }
+
+ 
+}
+
+@media (max-width:480px) {
+    .custom-cards .card {
+        margin-top: 0;
+    }
+
+    .custom-cards .card-body {
+        margin-right: 86px;
+    }
+
+    #content {
+        padding-top: 80px;
+    }
+
+    .checkbox label {
+        padding: 0 !important;
+    }
+
+    .balance p {
+        font-size: 12px !important;
+    }
+
+    .widget-chart-one .widget-heading .tabs a {
+        font-size: 10px;
+    }
+    .welcome{margin-top:30px;}
+
+}
+
+@media (max-width:414px) {}
+
+@media (max-width:375px) {
+    .navbar-item {
+        right: 6px;
+    }
+
+    .business {
+        margin-top: 40px;
+    }
+
+    .news-head {
+        font-size: 15px;
+    }
+
+    .news p {
+        font-size: 15px;
+    }
+
+}
+
+@media (max-width:360px) {
+    .custom-cards .card-body {
+        margin-right: 94px;
+    }
+}
+
+@media (max-width:320px) {
+    .widget-chart-two .apexcharts-canvas {
+        margin-left: -28px;
+    }
+
+    .navbar-item {
+        margin-left: -28px;
+    }
+
+    .justify-content-between {
+        justify-content: start !important;
+    }
+}

@@ -1,0 +1,54 @@
+<div class="container-fluid">
+    <div class="row layout-top-spacing">
+        <div id="basic" class="col-lg-12 layout-spacing">
+            <div class="widget-content widget-content-area">
+                <div class="row">
+                    <div class="col-md-6 mx-auto">
+                        <label>Select Users</label>
+                        <div class="form-group">
+                            <div class="ng-autocomplete">
+                                <ng-autocomplete [data]="userDtLst" [searchKeyword]="keyword" (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)' [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate" [debounceTime]="600" [minQueryLength]="5" placeholder="Search User. eg 'name', 'firm name', 'firm id'">
+                                </ng-autocomplete>
+
+                                <ng-template #itemTemplate let-item>
+                                    <a href="javascript:void(0)">
+                                        <span [innerHTML]="item.name"></span> |
+                                        <span [innerHTML]="item.username"></span> |
+                                        <span [innerHTML]="item.firmname"></span>
+                                    </a>
+                                </ng-template>
+
+                                <ng-template #notFoundTemplate let-notFound>
+                                    <div [innerHTML]="notFound"></div>
+                                </ng-template>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="data">
+
+                    <!-- <input type="text" class="form-control mb-3 mx-auto w-75" placeholder="search operator" [(ngModel)]="searchInp" (keyup)="searchFilter($event)"> -->
+                    <div class="commBox container">
+                        <ng-template ngFor let-item [ngForOf]="filterDt">
+                            <ng-template [ngIf]="item.isShow || itemFilter">
+                                <div class="row mb-2 d-flex align-items-center">
+                                    <div class="col-8 col-sm-6">
+                                        {{item.name}}
+                                    </div>
+                                    <div class="col-4 col-sm-6 text-right">
+                                        <input class="form-control-sm" type="text" (keypress)="numberOnly($event)" [(ngModel)]="item.value">
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </ng-template>
+
+                    </div>
+                    <div class="text-center mt-2">
+                        <input class="btn btn-info" (click)="onSubmit()" type="button" value="Submit">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

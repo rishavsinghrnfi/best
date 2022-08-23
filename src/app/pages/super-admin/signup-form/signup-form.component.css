@@ -1,0 +1,17 @@
+.form-form .form-form-wrap {
+    max-width: 845px !important;
+    margin: 0 auto;
+    min-width: 311px;
+    min-height: 100%;
+    align-self: center;
+    width: 100%;
+    height: 70vh;
+    justify-content: center;
+}
+.tc{
+
+    font-size: 14px !important;
+    color: #3b3f5c !important;
+    font-weight: 700 !important;
+    margin-bottom: 15px !important;
+}

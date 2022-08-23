@@ -1,0 +1,14 @@
+.idImgBox {
+    display   : block;
+    width     : 100%;
+    text-align: center;
+}
+
+.idImgBox img {
+    width    : 40%;
+    height   : auto; 
+}
+.font-bold {
+    font-weight: 600;
+    color      : black;
+}
