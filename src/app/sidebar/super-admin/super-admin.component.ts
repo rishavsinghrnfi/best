@@ -1,4 +1,6 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/service/api.service';
 import { EncodeDecode } from 'src/app/_helpers/encode-decode';
 
 @Component({
@@ -9,7 +11,7 @@ import { EncodeDecode } from 'src/app/_helpers/encode-decode';
 export class SuperAdminComponent implements OnInit {
   is_staff:any;
   usertype:any;
-  constructor() { }
+  constructor(private _service:ApiService,private route:Router) { }
 
   ngOnInit(): void {
     let decode: any = EncodeDecode('n', localStorage.getItem('LoginDetails'));
@@ -17,5 +19,8 @@ export class SuperAdminComponent implements OnInit {
     this.is_staff = data.is_staff;
     this.usertype = data.usertype;
   }
-
+  logout(){
+    this._service.onLogout();
+    this.route.navigate(['login']);
+  }
 }

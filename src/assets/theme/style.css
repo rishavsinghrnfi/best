@@ -35,8 +35,8 @@
 }
 
 .otp input:focus {
-    border-color: purple;
-    box-shadow: 0 0 5px purple inset;
+    border-color: #0085fe;
+    box-shadow: 0 0 5px #7da8d2 inset;
 }
 
 .otp input::selection {

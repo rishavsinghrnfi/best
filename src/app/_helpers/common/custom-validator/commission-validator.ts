@@ -1,4 +1,4 @@
-import { AbstractControl, FormArray, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, UntypedFormArray, UntypedFormControl, UntypedFormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import * as $ from "jquery";
 // setup simple regex for white listed characters
 const validCharacters = /[^\s\w,.:&\/()+%'`@-]/;
@@ -40,7 +40,7 @@ export class CustomValidators extends Validators {
       return null;
     }
   };
-  public static compairAmount(control: FormControl) {
+  public static compairAmount(control: UntypedFormControl) {
     if (control.value && control.value.length > 0) {
       const matches = control.value.match(validCharacters);
       return matches
@@ -52,8 +52,8 @@ export class CustomValidators extends Validators {
 
   public static validateMinAndMax(min: string, max: string): ValidatorFn {
     return (formGroup: AbstractControl): ValidationErrors | null => {
-      let minVal = (formGroup.get(min) as FormControl)?.value;
-      let maxVal = (formGroup.get(max) as FormControl)?.value;
+      let minVal = (formGroup.get(min) as UntypedFormControl)?.value;
+      let maxVal = (formGroup.get(max) as UntypedFormControl)?.value;
       if (minVal === maxVal) {
         return null;
       }
@@ -66,8 +66,8 @@ export class CustomValidators extends Validators {
   public static is_fixedValue(): ValidatorFn {
     return (formControl: AbstractControl): ValidationErrors | null => {
 
-      let valueVal = formControl.get('value') as FormControl;
-      let is_fixedVal = formControl.get('is_fixed') as FormControl;
+      let valueVal = formControl.get('value') as UntypedFormControl;
+      let is_fixedVal = formControl.get('is_fixed') as UntypedFormControl;
       // //console.log(valueVal?.value);
       // //console.log(formControl?.value);
       if (is_fixedVal?.value === false && (valueVal?.value > 0.99)) {
@@ -96,7 +96,7 @@ export class CustomValidators extends Validators {
 
   static firstRowMinpay(fixedAmt: number): ValidatorFn {
     return (formArray: AbstractControl): ValidationErrors | null => {
-      let iterations = (((formArray.parent as FormGroup)?.controls['arr'] as FormArray)?.controls[0] as FormGroup)?.controls['slab_min'] as FormControl;
+      let iterations = (((formArray.parent as UntypedFormGroup)?.controls['arr'] as UntypedFormArray)?.controls[0] as UntypedFormGroup)?.controls['slab_min'] as UntypedFormControl;
       if (iterations?.value && iterations?.value != fixedAmt) {
         iterations?.setErrors({ 'firstMinAmountRange': true })
       }
@@ -106,7 +106,7 @@ export class CustomValidators extends Validators {
 
   static firstRowMin(fixedAmt: number = 100): ValidatorFn {
     return (formArray: AbstractControl): ValidationErrors | null => {
-      let iterations = (((formArray.parent as FormGroup)?.controls['arr'] as FormArray)?.controls[0] as FormGroup)?.controls['slab_min'] as FormControl;
+      let iterations = (((formArray.parent as UntypedFormGroup)?.controls['arr'] as UntypedFormArray)?.controls[0] as UntypedFormGroup)?.controls['slab_min'] as UntypedFormControl;
       if (iterations?.value && iterations?.value != fixedAmt) {
         iterations?.setErrors({ 'firstMinAmountRange': true })
       }
@@ -116,12 +116,12 @@ export class CustomValidators extends Validators {
 
   static lastRowMax(fixedAmt: number = 10000): ValidatorFn {
     return (formArray: AbstractControl): ValidationErrors | null => {
-      let len = ((formArray.parent as FormGroup)?.controls['arr'] as FormArray)?.value.length;
-      let iterations = (((formArray.parent as FormGroup)?.controls['arr'] as FormArray)?.controls[len - 1] as FormGroup)?.controls['slab_max'] as FormControl;
+      let len = ((formArray.parent as UntypedFormGroup)?.controls['arr'] as UntypedFormArray)?.value.length;
+      let iterations = (((formArray.parent as UntypedFormGroup)?.controls['arr'] as UntypedFormArray)?.controls[len - 1] as UntypedFormGroup)?.controls['slab_max'] as UntypedFormControl;
       if (iterations?.value && iterations?.value != fixedAmt) {
-        ((formArray.parent as FormGroup)?.controls['validCheck'] as FormArray)?.setErrors({ 'lastMaxAmount': true })
+        ((formArray.parent as UntypedFormGroup)?.controls['validCheck'] as UntypedFormArray)?.setErrors({ 'lastMaxAmount': true })
       } else {
-        ((formArray.parent as FormGroup)?.controls['validCheck'] as FormArray)?.setErrors(null)
+        ((formArray.parent as UntypedFormGroup)?.controls['validCheck'] as UntypedFormArray)?.setErrors(null)
       }
       return null;
     }
@@ -130,12 +130,12 @@ export class CustomValidators extends Validators {
 
   static lastRowMaxpay(fixedAmt: number): ValidatorFn {
     return (formArray: AbstractControl): ValidationErrors | null => {
-      let len = ((formArray.parent as FormGroup)?.controls['arr'] as FormArray)?.value.length;
-      let iterations = (((formArray.parent as FormGroup)?.controls['arr'] as FormArray)?.controls[len - 1] as FormGroup)?.controls['slab_max'] as FormControl;
+      let len = ((formArray.parent as UntypedFormGroup)?.controls['arr'] as UntypedFormArray)?.value.length;
+      let iterations = (((formArray.parent as UntypedFormGroup)?.controls['arr'] as UntypedFormArray)?.controls[len - 1] as UntypedFormGroup)?.controls['slab_max'] as UntypedFormControl;
       if (iterations?.value && iterations?.value != fixedAmt) {
-        ((formArray.parent as FormGroup)?.controls['validCheck'] as FormArray)?.setErrors({ 'lastMaxAmountss': true })
+        ((formArray.parent as UntypedFormGroup)?.controls['validCheck'] as UntypedFormArray)?.setErrors({ 'lastMaxAmountss': true })
       } else {
-        ((formArray.parent as FormGroup)?.controls['validCheck'] as FormArray)?.setErrors(null)
+        ((formArray.parent as UntypedFormGroup)?.controls['validCheck'] as UntypedFormArray)?.setErrors(null)
       }
       return null;
     }

@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Select2OptionData } from 'ng-select2';
 import { ApiService } from 'src/app/service/api.service';
@@ -15,7 +15,7 @@ import { EncodeDecode } from 'src/app/_helpers/encode-decode';
   styleUrls: ['./create-retailer.component.css']
 })
 export class CreateRetailerComponent implements OnInit {
-  form: any = FormGroup;
+  form: any = UntypedFormGroup;
   isEdit: boolean = false;
   editID: any = null;
   maxDate!: Date;
@@ -25,7 +25,7 @@ export class CreateRetailerComponent implements OnInit {
   usertype: any;
   constructor(
     private auth: ApiService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     public datepipe: DatePipe,
     private route: ActivatedRoute
   ) {

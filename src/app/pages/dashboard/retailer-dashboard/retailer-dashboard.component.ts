@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { config } from 'src/app/service/config';
@@ -24,7 +24,7 @@ export class RetailerDashboardComponent implements OnInit {
   alltxnst:any;
   content:any;
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private auth: ApiService,
     private route: Router,
   ) { }

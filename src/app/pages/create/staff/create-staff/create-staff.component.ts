@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators  } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators  } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { config } from 'src/app/service/config';
@@ -12,12 +12,12 @@ import Swal from 'sweetalert2';
 })
 export class CreateStaffComponent implements OnInit {
   showRemark:any;
-  form: any = FormGroup;
+  form: any = UntypedFormGroup;
   isEdit: boolean = false;
   editID: any = null;
   constructor(
     private auth: ApiService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private route: ActivatedRoute,
     private router:Router
     ) {

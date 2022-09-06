@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { config } from 'src/app/service/config';
@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./fund-admin-approve.component.css']
 })
 export class FundAdminApproveComponent implements OnInit {
-  form: any = FormGroup;
+  form: any = UntypedFormGroup;
   appvlID: any;
   bankname: any = 'State Bank Of India';
   txnid: any;
@@ -22,7 +22,7 @@ export class FundAdminApproveComponent implements OnInit {
   credit:any;
   constructor(
     private auth: ApiService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private route: ActivatedRoute,
     private routes: Router
   ) {

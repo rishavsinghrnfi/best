@@ -1,4 +1,4 @@
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { config } from 'src/app/service/config';
 import { DataTableToolsComponent } from 'src/app/_helpers/data-table-tools/data-table-tools.component';
@@ -50,12 +50,12 @@ export class FundTransferListComponent implements OnInit {
     } 
   ];
   minDate!: Date;
-  form:any=FormGroup;
+  form:any=UntypedFormGroup;
   bsCustConfg = CustConfg;
   @ViewChild('rangePicker') rangePicker: any;
   constructor() {
-    this.form = new FormGroup({
-      selectdate: new FormControl([new Date(), new Date()], [Validators.required]),
+    this.form = new UntypedFormGroup({
+      selectdate: new UntypedFormControl([new Date(), new Date()], [Validators.required]),
     })
    }
 

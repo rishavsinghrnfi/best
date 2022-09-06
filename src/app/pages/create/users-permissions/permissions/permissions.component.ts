@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Select2OptionData } from 'ng-select2';
 import { Options } from 'select2';
 import { ApiService } from 'src/app/service/api.service';
@@ -12,19 +12,19 @@ import Swal from 'sweetalert2';
   styleUrls: ['./permissions.component.css']
 })
 export class PermissionsComponent implements OnInit {
-  form: any = FormGroup;
+  form: any = UntypedFormGroup;
 
   userAutoComData: any;
   userKeyword = 'userdetail';
   prevVal: any;
   permissionData: any = null;
-  formArr: FormArray = this.fb.array([]);
+  formArr: UntypedFormArray = this.fb.array([]);
   selectedUser: any;
 
 
   constructor(
     private auth: ApiService,
-    private fb: FormBuilder
+    private fb: UntypedFormBuilder
   ) {
     this.form = this.fb.group({
       secondForm: this.formArr
@@ -60,7 +60,7 @@ export class PermissionsComponent implements OnInit {
       if (res['statuscode'] == 200) {
         this.selectedUser = res['name'];
         this.prevVal = res['id'];
-        this.formArr = new FormArray([]);
+        this.formArr = new UntypedFormArray([]);
         this.form = this.fb.group({
           secondForm: this.formArr,
         });
@@ -69,7 +69,7 @@ export class PermissionsComponent implements OnInit {
           const element = this.permissionData[key];
           var controlValue: any = false;
           controlValue = element == '0' ? false : element == '1' ? true : '';
-          let newGroup: FormGroup = this.fb.group({
+          let newGroup: UntypedFormGroup = this.fb.group({
             name: this.fb.control(key),
             value: this.fb.control(controlValue),
           })
@@ -80,7 +80,7 @@ export class PermissionsComponent implements OnInit {
   }
 
   get getSecondForm() {
-    return this.form.get('secondForm') as FormArray;
+    return this.form.get('secondForm') as UntypedFormArray;
   }
 
 

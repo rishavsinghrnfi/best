@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { config } from 'src/app/service/config';
@@ -13,12 +13,12 @@ import Swal from 'sweetalert2';
   styleUrls: ['./id-purchase.component.css']
 })
 export class IdPurchaseComponent implements OnInit {
-  form: any = FormGroup;
+  form: any = UntypedFormGroup;
   idrate: any;
   total:any;
   constructor(
     private auth: ApiService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     public datepipe: DatePipe,
     private route: ActivatedRoute
   ) { 

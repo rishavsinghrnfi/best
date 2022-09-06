@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Select2OptionData } from 'ng-select2';
 import { ApiService } from 'src/app/service/api.service';
@@ -14,14 +14,14 @@ import Swal from 'sweetalert2';
 })
 export class AddCompanyBankComponent implements OnInit {
 	bankList: any;
-	form: any = FormGroup;
+	form: any = UntypedFormGroup;
 	bank: any = '';
 	bankLisitng: Array<Select2OptionData> = [];
   isEdit: boolean = false;
   editID: any = null;
   constructor(
     private auth: ApiService,
-		private fb: FormBuilder,
+		private fb: UntypedFormBuilder,
     private route: ActivatedRoute,
     private router: Router
   ) {

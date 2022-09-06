@@ -98,11 +98,6 @@
     height: 33px;
 }
 
-.navbar-item {
-    position: absolute;
-    right: 5px;
-    top:7px;
-}
 
 .widget {
     padding: 20px;

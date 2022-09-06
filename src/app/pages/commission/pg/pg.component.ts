@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, FormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Select2OptionData } from 'ng-select2';
 import { Options } from 'select2';
 import { ApiService } from 'src/app/service/api.service';
@@ -22,21 +22,21 @@ export class PgComponent implements OnInit {
 
   userId: any;
 
-  mainForm: FormGroup;
+  mainForm: UntypedFormGroup;
   paymentTypeLst: any;
 
 
-  constructor(private fb: FormBuilder, private _auth: ApiService, private _CommonService: CommonService) {
+  constructor(private fb: UntypedFormBuilder, private _auth: ApiService, private _CommonService: CommonService) {
     this.mainForm = this.fb.group({
-      mainArr: new FormArray([])
+      mainArr: new UntypedFormArray([])
     });
   }
   get getMainArr() {
-    return ((this.mainForm as FormGroup).controls['mainArr'] as FormArray)
+    return ((this.mainForm as UntypedFormGroup).controls['mainArr'] as UntypedFormArray)
   }
 
   getArr(arr: any, i: any): any {
-    return (<FormArray>arr.controls['arr'])
+    return (<UntypedFormArray>arr.controls['arr'])
   }
 
   ngOnInit(): void {
@@ -105,8 +105,8 @@ export class PgComponent implements OnInit {
     for (const iterat in noData) {
       let ele = noData[iterat];  
      
-        let newUsergroup: FormArray = this.fb.array([]);
-        let mainUsergroup: FormGroup = this.fb.group({
+        let newUsergroup: UntypedFormArray = this.fb.array([]);
+        let mainUsergroup: UntypedFormGroup = this.fb.group({
           name: [iterat],
           arr: newUsergroup
         });

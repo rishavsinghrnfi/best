@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { EncodeDecode } from 'src/app/_helpers/encode-decode';
@@ -15,7 +15,7 @@ export class AepshandlerComponent implements OnInit {
   is_onboard:any;
   constructor(
     private _auth: ApiService,
-		private fb: FormBuilder,
+		private fb: UntypedFormBuilder,
     private route: Router
   ) {
 

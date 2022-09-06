@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { config } from 'src/app/service/config';
@@ -91,7 +91,7 @@ export class MarchantListComponent implements OnInit {
   constructor(
     private datepipe: DatePipe,
     private auth: ApiService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private route: Router
     ) {
   }

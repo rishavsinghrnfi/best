@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Select2OptionData } from 'ng-select2';
 import { ApiService } from 'src/app/service/api.service';
@@ -15,9 +15,9 @@ declare var $: any;
   styleUrls: ['./recharge-handler.component.css']
 })
 export class RechargeHandlerComponent implements OnInit {
-  prepaid: any = FormGroup;
-  dth: any = FormGroup;
-  status: any = FormGroup;
+  prepaid: any = UntypedFormGroup;
+  dth: any = UntypedFormGroup;
+  status: any = UntypedFormGroup;
   referenceID: any = { dth: "", prepaid: "" };
   statusData: any = null;
   HLRinfo: any = { operator: "", circle: "" };
@@ -49,7 +49,7 @@ export class RechargeHandlerComponent implements OnInit {
   mdlId: any = 'testRecipt';
   invoiceObj: any = [];
 
-  constructor(private auth: ApiService, private fb: FormBuilder, private route: Router,
+  constructor(private auth: ApiService, private fb: UntypedFormBuilder, private route: Router,
     private _RiCustomMdlService: RiCustomMdlService, private loader: LoaderService) {
 
     this.prepaid = this.fb.group({

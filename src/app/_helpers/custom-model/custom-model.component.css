@@ -1,3 +1,6 @@
 .close{
     cursor: pointer;
 }
+.forgot-img{display:flex;justify-content:center;}
+.forgot-img img{width:50%}
+.resendtext{font-size:18px;}

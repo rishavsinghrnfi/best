@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
 import { config } from 'src/app/service/config';
 import { CustConfg } from 'src/app/_helpers/common/custom-datepicker/ngx-datePicker-CustConfg';
@@ -18,7 +18,7 @@ export class PanStatementComponent implements OnInit {
   url:string = config.pan.panstatement;
   bsCustConfg = CustConfg;
   exceldownurl:string = config.pan.panstatementdownload;
-  form: any =FormGroup;
+  form: any =UntypedFormGroup;
   @ViewChild('rangePicker') rangePicker:any;
   minDate!: Date;
   downloadexl:any;
@@ -54,8 +54,8 @@ export class PanStatementComponent implements OnInit {
     }
   ];
   constructor(private api:ApiService) { 
-    this.form = new FormGroup({
-      selectdate: new FormControl([new Date(),new Date()], [Validators.required]), 
+    this.form = new UntypedFormGroup({
+      selectdate: new UntypedFormControl([new Date(),new Date()], [Validators.required]), 
     })
   }
 

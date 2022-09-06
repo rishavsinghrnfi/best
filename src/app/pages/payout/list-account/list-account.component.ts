@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { config } from 'src/app/service/config';
@@ -19,9 +19,9 @@ export class ListAccountComponent implements OnInit {
   pancard: boolean = false;
   aadharcard: boolean = false;
   drivinglicence: boolean = false;
-  form: any = FormGroup;
-  dotransaction: any = FormGroup;
-  internalTransaction: any = FormGroup;
+  form: any = UntypedFormGroup;
+  dotransaction: any = UntypedFormGroup;
+  internalTransaction: any = UntypedFormGroup;
   bene_ID: any;
   panImage: any;
   passbookimg: any;
@@ -33,7 +33,7 @@ export class ListAccountComponent implements OnInit {
   formbtn: boolean = false;
   constructor(
     private auth: ApiService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private loader:LoaderService,

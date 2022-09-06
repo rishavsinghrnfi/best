@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Select2OptionData } from 'ng-select2';
 import { Options } from 'select2';
@@ -21,7 +21,7 @@ export class SignupUserListComponent implements OnInit {
   maxDate!: Date;
   modelObj:any = [];
   url: string = config.sighnupList; 
-  signupform: any = FormGroup;
+  signupform: any = UntypedFormGroup;
   userid:any;
   usertype:any;
   partnerLisitng: Array<Select2OptionData> = [];
@@ -93,7 +93,7 @@ export class SignupUserListComponent implements OnInit {
   constructor(
     private datepipe: DatePipe,
     private auth: ApiService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private route: Router
     ) {
     this.signupform = this.fb.group({ 

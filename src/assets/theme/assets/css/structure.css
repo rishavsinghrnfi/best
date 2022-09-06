@@ -1,9 +1,9 @@
-html { min-height: 100% }
+
 body {
     color: #888ea8;
     height: 100%;
     font-size: 0.875rem;
-    background: #fff2c5;
+    background: #F0F0F8;
     overflow-x: hidden;
     overflow-y: auto;
     letter-spacing: 0.0312rem;
@@ -60,7 +60,7 @@ code { color: #e7515a; }
     border-bottom-right-radius: 6px;
     border-bottom-left-radius: 6px;
     margin: 0 auto;
-    margin-top: 17em;
+    margin-top: 5em;
 }
 .main-container-fluid > .main-content > .container {
     float: left;
@@ -159,8 +159,7 @@ code { color: #e7515a; }
 }
 .header-container .header {
     max-width: 100%;
-    margin: 0 auto;
-    padding:0 21px;
+    padding:0 32px;
     max-height:75px;
     background-color:#FFF2C5;
     
@@ -176,8 +175,7 @@ code { color: #e7515a; }
 }
 .navbar .nav-logo a.navbar-brand img {
     vertical-align: top;
-    width: 244px;
-    height: 43px
+    height: 60px
 }
 .navbar .nav-logo a.navbar-brand .navbar-brand-name {
     font-size: 24px !important;
@@ -646,8 +644,8 @@ code { color: #e7515a; }
 /* User Profile Dropdown*/
 
 .user-profile-dropdown {
-    margin-left: 20px;
-    margin-right: 16px;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .user-profile-dropdown .dropdown-menu .user-profile-section {
@@ -1065,7 +1063,7 @@ code { color: #e7515a; }
         background: #fff;
         min-height: 50px;
        position: fixed;
-        top: 95px;
+        top: 0px;
         right: 0;
         left: 0;
         z-index: 1030;
@@ -1077,6 +1075,9 @@ code { color: #e7515a; }
         max-width: 100%;
         margin: 0 auto;
         background-image: linear-gradient(#01015A, #010157);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
     .topbar-nav.header nav#topbar ul.menu-categories {
         display: flex;
@@ -1130,7 +1131,7 @@ code { color: #e7515a; }
     .topbar-nav.header nav#topbar ul.menu-categories li.menu a > div span {
         font-size: 14px;
         font-weight: 400;
-        color: #6966A6;
+        color: #fff;
         vertical-align: top;
     }
     .topbar-nav.header nav#topbar ul.menu-categories li.menu.active > a svg.feather.feather-chevron-down {
@@ -1604,13 +1605,13 @@ code { color: #e7515a; }
 
 .top-txt{
     width: calc(30% - 30px);
-    height: 100%;
-    background: #010159;
+    height:40px;
+    background:#f57c1c;
     box-sizing: border-box;
-    padding: 28px 50px;
+    padding:1px 50px;
     color: #fff;
     font-family: sans-serif;
-    line-height: 25px;
+    line-height:6;
     transform: skewX( -15deg);
     margin-left: -7px;
 }

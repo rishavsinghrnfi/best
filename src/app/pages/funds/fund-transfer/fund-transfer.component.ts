@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Select2OptionData } from 'ng-select2';
 import { ApiService } from 'src/app/service/api.service';
@@ -13,11 +13,11 @@ import Swal from 'sweetalert2';
   styleUrls: ['./fund-transfer.component.css']
 })
 export class FundTransferComponent implements OnInit {
-  form: any = FormGroup;
+  form: any = UntypedFormGroup;
   fromBanklist: Array<Select2OptionData> = [];
   toBanklist: Array<Select2OptionData> = [];
   constructor(private auth: ApiService,
-    private fb: FormBuilder, 
+    private fb: UntypedFormBuilder, 
     private datepipe: DatePipe,
     private route: Router, 
     private router: Router

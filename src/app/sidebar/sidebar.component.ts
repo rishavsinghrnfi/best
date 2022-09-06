@@ -24,18 +24,12 @@ export class SidebarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getverifyDetails();
+    // this.getverifyDetails();
     this.loginDetails = this.auth.Getsessiondata();
+    this.username = this.loginDetails.userInfo.username;
+    this.usertype = this.loginDetails.userInfo.usertype;
 
-    this.auth.validDomian((domainSettings: any) => {
-      this.icon = domainSettings.icon; 
-      
-    });
-
-    const formdata = new FormData();    
-    this.auth.postdata(formdata, config.getsettings).subscribe((res: any) => { 
-      this.marquee_content=res.data.marquee_content;  
-    })
+  
   }
 
   getverifyDetails() {

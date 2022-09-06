@@ -34,7 +34,7 @@ export class ApiService {
       let encode: any = EncodeDecode('n', localStorage.getItem('LoginDetails'));
       this.sesion_data = JSON.parse(encode);
       const jsondata = this.sesion_data;
-      jsondata.usertypename = userType[jsondata.usertype];
+      jsondata.usertypename = userType[jsondata.userInfo.usertype];
       //console.log(jsondata)
       return jsondata;
     } else {
@@ -45,7 +45,8 @@ export class ApiService {
     if (localStorage.getItem('LoginDetails')) {
       let encode: any = EncodeDecode('n', localStorage.getItem('LoginDetails'));
       this.sesion_data = JSON.parse(encode);
-      const jsondata = this.sesion_data.loginsession;
+       
+      const jsondata = this.sesion_data.access_token;
       return jsondata;
     } else {
       return false;
@@ -67,7 +68,7 @@ export class ApiService {
     } else {
       let encode: any = EncodeDecode('n', localStorage.getItem('LoginDetails'));
       this.sesion_data = JSON.parse(encode);
-      const jsondata = this.sesion_data.loginsession;
+      const jsondata = this.sesion_data.access_token;
       return jsondata;
     }
   }

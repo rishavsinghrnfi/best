@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
 import { config } from 'src/app/service/config';
 import { CustomValidators } from 'src/app/_helpers/common/custom-validator/commission-validator';
@@ -21,19 +21,19 @@ export class CcBillPayComponent implements OnInit {
   data: any = [];
   val: any = '';
 
-  Form: FormGroup;
+  Form: UntypedFormGroup;
 
-  formArr = new FormArray([]);
+  formArr = new UntypedFormArray([]);
   userId: any;
 
-  constructor(private fb: FormBuilder, private _auth: ApiService, private elementRef: ElementRef) {
+  constructor(private fb: UntypedFormBuilder, private _auth: ApiService, private elementRef: ElementRef) {
     this.Form = this.fb.group({
       slabAmount: this.formArr
     });
   }
 
   get formAr() {
-    return ((this.Form as FormGroup).get('slabAmount') as FormArray).controls;
+    return ((this.Form as UntypedFormGroup).get('slabAmount') as UntypedFormArray).controls;
   }
 
   getCustGroup(i: any): any {
@@ -41,7 +41,7 @@ export class CcBillPayComponent implements OnInit {
 
     // console.log(((this.Form as FormGroup).get('slabAmount') as FormArray).controls[i]);
 
-    return ((this.Form as FormGroup).get('slabAmount') as FormArray);
+    return ((this.Form as UntypedFormGroup).get('slabAmount') as UntypedFormArray);
   }
 
   ngOnInit(): void {
@@ -94,10 +94,10 @@ export class CcBillPayComponent implements OnInit {
   createForm(data: any) {
     // console.log(data);
     this.data = data.forEach((element: any) => {
-      this.formArr.push(new FormGroup({
-        'label': new FormControl(element.label),
-        'value': new FormControl(element.value, [Validators.required, Validators.min(0), CustomValidators.enter_OnlyNumber_OnlyFloatTrue_Both()]),
-        'slot': new FormControl(element.slot),
+      this.formArr.push(new UntypedFormGroup({
+        'label': new UntypedFormControl(element.label),
+        'value': new UntypedFormControl(element.value, [Validators.required, Validators.min(0), CustomValidators.enter_OnlyNumber_OnlyFloatTrue_Both()]),
+        'slot': new UntypedFormControl(element.slot),
       }));
     });
   }
@@ -135,17 +135,17 @@ export class CcBillPayComponent implements OnInit {
 
 
   getArr(arr: any, i: any): any {
-    return (<FormArray>arr.controls['arr'])
+    return (<UntypedFormArray>arr.controls['arr'])
   }
 
   add(pm: any, i: any) {
     // //console.log(this.getArr(pm, i).value);
     let leng: number = pm.controls['arr'].controls.length;
 
-    let val: number = +((pm.controls['arr'] as FormArray)?.controls[leng - 1] as FormGroup)?.controls['slab_max']?.value;
+    let val: number = +((pm.controls['arr'] as UntypedFormArray)?.controls[leng - 1] as UntypedFormGroup)?.controls['slab_max']?.value;
     //console.log(val);
 
-    let newUsergroup: FormGroup = this.fb.group({
+    let newUsergroup: UntypedFormGroup = this.fb.group({
       slab_min: [val + 1, [Validators.required]],
       slab_max: [null, [Validators.required]],
       value: [0, Validators.required],
@@ -160,7 +160,7 @@ export class CcBillPayComponent implements OnInit {
   isAddBtnDisabled(arr: any, i: any) {
     let leng: number = arr.controls['arr'].controls.length;
 
-    let val: number = +((arr.controls['arr'] as FormArray)?.controls[leng - 1] as FormGroup)?.controls['slab_max']?.value;
+    let val: number = +((arr.controls['arr'] as UntypedFormArray)?.controls[leng - 1] as UntypedFormGroup)?.controls['slab_max']?.value;
 
     if (val >= 10000) {
       return true;

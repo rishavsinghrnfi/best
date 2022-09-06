@@ -132,6 +132,7 @@ import { CcBillPayComponent } from './pages/commission/othercomm/cc-bill-pay/cc-
 import { MobikwikCheckWalletComponent } from './pages/wallet/mobikwik-check-wallet/mobikwik-check-wallet.component'; 
 import { RetailerNotificationComponent } from './pages/retailer-notification/retailer-notification.component'; 
 import { WebsiteSettingsComponent } from './pages/website-settings/website-settings.component';
+import { FormComponent } from './pages/form/form.component';
 const routes: Routes = [
   {
     path: '',
@@ -839,6 +840,10 @@ const routes: Routes = [
     path: 'portal-settings',
     component: WebsiteSettingsComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path:'form',
+    component:FormComponent,
   },
   {
     path: '**',

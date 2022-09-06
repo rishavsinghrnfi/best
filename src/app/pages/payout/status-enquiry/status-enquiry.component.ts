@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
 import { config } from 'src/app/service/config';
 import { CustConfg } from 'src/app/_helpers/common/custom-datepicker/ngx-datePicker-CustConfg';
@@ -69,10 +69,10 @@ export class StatusEnquiryComponent implements OnInit {
   @ViewChild('rangePicker') rangePicker: any;
   bsCustConfg = CustConfg;
   minDate!: Date;
-  form: any = FormGroup;
+  form: any = UntypedFormGroup;
   constructor(private datepipe: DatePipe, private auth: ApiService) {
-    this.form = new FormGroup({
-      selectdate: new FormControl([new Date(), new Date()], [Validators.required]),
+    this.form = new UntypedFormGroup({
+      selectdate: new UntypedFormControl([new Date(), new Date()], [Validators.required]),
     })
   }
 

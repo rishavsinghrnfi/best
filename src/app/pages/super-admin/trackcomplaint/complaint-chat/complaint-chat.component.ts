@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { config } from 'src/app/service/config';
@@ -11,13 +11,13 @@ import Swal from 'sweetalert2';
   styleUrls: ['./complaint-chat.component.css']
 })
 export class ComplaintChatComponent implements OnInit {
-  form: any = FormGroup;
+  form: any = UntypedFormGroup;
   private chatId: any = '';
   public chatDetail: any = [];
   constructor(
     private _activatedRoute: ActivatedRoute,
     private auth: ApiService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     ) { }
 
   ngOnInit(): void {

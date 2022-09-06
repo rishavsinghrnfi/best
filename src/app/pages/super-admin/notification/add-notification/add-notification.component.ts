@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { ApiService } from 'src/app/service/api.service';
@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./add-notification.component.css']
 })
 export class AddNotificationComponent implements OnInit {
-  form: any = FormGroup;
+  form: any = UntypedFormGroup;
   isEdit: boolean = false;
   editID: any = null; 
 
@@ -60,7 +60,7 @@ export class AddNotificationComponent implements OnInit {
 };
   constructor(
     private auth: ApiService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private route: ActivatedRoute,
     private router:Router
     ) {

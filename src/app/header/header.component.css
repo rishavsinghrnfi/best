@@ -69,7 +69,6 @@
 
 .user-drop {
     height: 31px;
-    background: #010159!important;
     color: #FFF;
 }
 
@@ -84,17 +83,15 @@
     border-right: 0;
 }
 
-/* .navbar-item li:nth-child(-n + 2) {
-    padding: 3px 14px;
-} */
-
-
 /* --custom css-- */
 .userdetail{color:#fff;padding-top: 6px;font-size: 11px;}
 .balance {padding-right: 14px;}
 .topbar {
-    background-color: #EF0290;
-    height: 36px;
+    background-color:#0054a9;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 56px 0 0;
 }
 
 .nav-top li {
@@ -103,8 +100,7 @@
 }
 
 .navbar-item.nav-top {
-    top: 5px;
-    margin-bottom: 0;
+    padding:5px 0;
 }
 
 .navbar-item.nav-top li {

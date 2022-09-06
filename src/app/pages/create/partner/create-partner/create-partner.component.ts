@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Select2OptionData } from 'ng-select2';
 import { Options } from 'select2';
@@ -15,7 +15,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./create-partner.component.css']
 })
 export class CreatePartnerComponent implements OnInit {
-  form: any = FormGroup;
+  form: any = UntypedFormGroup;
   isEdit: boolean = false;
   editID: any = null;
   maxDate!: Date;
@@ -27,7 +27,7 @@ export class CreatePartnerComponent implements OnInit {
   showRemark:any;
   constructor(
     private auth: ApiService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     public datepipe: DatePipe,
     private route: ActivatedRoute
   ) {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
 import { config } from 'src/app/service/config';
 import Swal from 'sweetalert2';
@@ -15,7 +15,7 @@ export class ServiceControlComponent implements OnInit {
   radioSelected:any = {};
   constructor(
     private auth: ApiService,
-    private fb: FormBuilder
+    private fb: UntypedFormBuilder
   ) { 
   }
 

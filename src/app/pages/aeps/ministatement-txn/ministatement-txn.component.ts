@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
 import { config } from 'src/app/service/config';
 import { CustConfg } from 'src/app/_helpers/common/custom-datepicker/ngx-datePicker-CustConfg';
@@ -21,7 +21,7 @@ export class MinistatementTxnComponent implements OnInit {
   url:string = config.downloadstatement.ministatementtxn;
   bsCustConfg = CustConfg;
   downloadexl:any; 
-  form: any =FormGroup;
+  form: any =UntypedFormGroup;
   ministatementDetails:any;
   @ViewChild('rangePicker') rangePicker:any;
   minDate!: Date;
@@ -61,8 +61,8 @@ export class MinistatementTxnComponent implements OnInit {
   }
   ];
   constructor(private api:ApiService) { 
-    this.form = new FormGroup({
-      selectdate: new FormControl([new Date(),new Date()], [Validators.required]), 
+    this.form = new UntypedFormGroup({
+      selectdate: new UntypedFormControl([new Date(),new Date()], [Validators.required]), 
     })
   }
 

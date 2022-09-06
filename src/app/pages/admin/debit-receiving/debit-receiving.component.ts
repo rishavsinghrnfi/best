@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
 import { config } from 'src/app/service/config';
 import Swal from 'sweetalert2';
@@ -20,12 +20,12 @@ export class DebitReceivingComponent implements OnInit {
   balance:any;
   name:any;
   showBalance:boolean = false;
-  debitbalance:any = FormGroup;
-  receivingbalance:any = FormGroup;
+  debitbalance:any = UntypedFormGroup;
+  receivingbalance:any = UntypedFormGroup;
   userID:any;
   constructor(
     private auth: ApiService,
-    private fb: FormBuilder
+    private fb: UntypedFormBuilder
   ) {
     this.debitbalance = this.fb.group({
       remarks: ['', [Validators.required]],

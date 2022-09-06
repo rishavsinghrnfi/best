@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { config } from 'src/app/service/config';
@@ -20,7 +20,7 @@ export class KycUserListComponent implements OnInit {
   remarks: any;
   modelObj: any = [];
   url: string = config.kyc.list;
-  kycform: any = FormGroup;
+  kycform: any = UntypedFormGroup;
   docid: any;
   panImage: any;
   aadhar_front: any;
@@ -94,7 +94,7 @@ export class KycUserListComponent implements OnInit {
   constructor(
     private datepipe: DatePipe,
     private auth: ApiService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private route: Router
   ) {
     this.kycform = this.fb.group({

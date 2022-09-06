@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
 import { config } from 'src/app/service/config';
 import Swal from 'sweetalert2';
@@ -19,7 +19,7 @@ export class RechargeComponent implements OnInit {
 
   itemFilter: boolean = true;
   searchInp: string = '';
-  constructor(private fb: FormBuilder, private _auth: ApiService) {
+  constructor(private fb: UntypedFormBuilder, private _auth: ApiService) {
 
   }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { config } from 'src/app/service/config';
@@ -14,11 +14,11 @@ import Swal from 'sweetalert2';
 })
 export class CheckWalletComponent implements OnInit {
   @ViewChild(CustomModelComponent) model!:CustomModelComponent;
-  form: any = FormGroup;
+  form: any = UntypedFormGroup;
   formdata: any;
   constructor(
     private _auth: ApiService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private route: Router
   ) {
     this.form = this.fb.group({

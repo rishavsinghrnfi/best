@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'; 
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'; 
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms'; 
 import { ApiService } from 'src/app/service/api.service';
 import { config } from 'src/app/service/config';
 import Swal from 'sweetalert2';
@@ -14,12 +14,12 @@ import { EncodeDecode } from 'src/app/_helpers/encode-decode';
   styleUrls: ['./fund-transfer-to-retailer.component.css']
 })
 export class FundTransferToRetailerComponent implements OnInit {
-  form: any = FormGroup;
+  form: any = UntypedFormGroup;
   userType:any;
   loginUserID:any;
   userLisitng: Array<Select2OptionData> = [];
   constructor(private auth: ApiService,
-    private fb: FormBuilder, 
+    private fb: UntypedFormBuilder, 
     private datepipe: DatePipe,
     private route: Router) { 
       this.form = this.fb.group({

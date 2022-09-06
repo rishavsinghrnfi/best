@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Select2OptionData } from 'ng-select2';
 import { Options } from 'select2';
 import { ApiService } from 'src/app/service/api.service';
@@ -19,17 +19,17 @@ export class CommAadhaarComponent implements OnInit {
   showData: boolean = false;
   data: any;
   val: any = '';
-  public mainForm: FormGroup;
+  public mainForm: UntypedFormGroup;
   userId: any;
 
-  constructor(private fb: FormBuilder, private _auth: ApiService, private elementRef: ElementRef) {
-    this.mainForm = new FormGroup({
-      value: new FormControl(null, [Validators.required, Validators.min(0)])
+  constructor(private fb: UntypedFormBuilder, private _auth: ApiService, private elementRef: ElementRef) {
+    this.mainForm = new UntypedFormGroup({
+      value: new UntypedFormControl(null, [Validators.required, Validators.min(0)])
     });
   }
 
   get getVal() {
-    return this.mainForm.controls['value'] as FormControl;
+    return this.mainForm.controls['value'] as UntypedFormControl;
   }
 
   ngOnInit(): void {

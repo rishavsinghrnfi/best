@@ -1,16 +1,18 @@
 <div class="modal justify-content-center align-items-center" id="myModal" [style.display]="showModal==false?'none'  : 'flex'">
     <div class="modal-dialog">
-        <div class="modal-content model-center">
+        <div class="modal-content model-center p-0">
             <div class="modal-header">
                 <span class="close" (click)="closeModal()" data-dismiss="modal">&times;</span>
             </div>
             <div class="modal-body">
                 <div class="otp">
                     <h3>Please enter the {{length}}-digit verification code we sent via SMS:</h3>
+                    <div class="forgot-img"><img src="../../../assets/login/images/otp.png"></div>
+                  
                     <div id="form">
                         <ng-otp-input  (onInputChange)="moveNext($event)" [config]="{length:length,allowNumbersOnly: true}"></ng-otp-input>
                     </div>
-                    <div class="text-center" *ngIf="resend">
+                    <div class="text-center resendtext" *ngIf="resend">
                         Didn't receive the code?<br />
                         <a href="javascript:void(0)" (click)="resendOTP()">Send code again</a><br />
                     </div>

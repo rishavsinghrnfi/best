@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Select2OptionData } from 'ng-select2';
 import { Options } from 'select2';
 import { ApiService } from 'src/app/service/api.service';
@@ -20,12 +20,12 @@ export class CommCashdepositComponent implements OnInit {
   userDetailsList: Array<Select2OptionData> = [];
   public options: Options;
 
-  public aepsData: FormGroup;
-  formArr = new FormArray([]);
+  public aepsData: UntypedFormGroup;
+  formArr = new UntypedFormArray([]);
   // data: any;
   userId: any;
 
-  constructor(private fb: FormBuilder, private _auth: ApiService, private elementRef: ElementRef) {
+  constructor(private fb: UntypedFormBuilder, private _auth: ApiService, private elementRef: ElementRef) {
     this.aepsData = this.fb.group({
       mainGroup: this.formArr,
     });
@@ -41,7 +41,7 @@ export class CommCashdepositComponent implements OnInit {
   }
 
   get mainStart() {
-    return (((this.aepsData as FormGroup).controls['mainGroup'] as FormArray));
+    return (((this.aepsData as UntypedFormGroup).controls['mainGroup'] as UntypedFormArray));
   }
 
   ngOnInit(): void {
@@ -65,7 +65,7 @@ export class CommCashdepositComponent implements OnInit {
     });
   }
   selectEvent(event: any) {
-    this.formArr = new FormArray([]);
+    this.formArr = new UntypedFormArray([]);
     this.aepsData = this.fb.group({
       mainGroup: this.formArr,
     });
@@ -140,18 +140,18 @@ export class CommCashdepositComponent implements OnInit {
   createForm(data: any) {
 
     for (const key in data) {
-      let innerFormArr = new FormArray([], { validators: [CustomValidators.compairRecordValidator(), CustomValidators.firstRowMin(), CustomValidators.lastRowMax()] });
+      let innerFormArr = new UntypedFormArray([], { validators: [CustomValidators.compairRecordValidator(), CustomValidators.firstRowMin(), CustomValidators.lastRowMax()] });
       this.data = data[key].forEach((element: any) => {
-        innerFormArr.push(new FormGroup({
-          'slab_min': new FormControl(element.slab_min, [Validators.required]),
-          'slab_max': new FormControl(element.slab_max, [Validators.required]),
-          'value': new FormControl(element.value, [Validators.required, Validators.min(0)]),
-          'is_fixed': new FormControl(element.is_fixed === '0' ? false : true, [Validators.required]),
+        innerFormArr.push(new UntypedFormGroup({
+          'slab_min': new UntypedFormControl(element.slab_min, [Validators.required]),
+          'slab_max': new UntypedFormControl(element.slab_max, [Validators.required]),
+          'value': new UntypedFormControl(element.value, [Validators.required, Validators.min(0)]),
+          'is_fixed': new UntypedFormControl(element.is_fixed === '0' ? false : true, [Validators.required]),
         }, { validators: [CustomValidators.validateMinAndMax('slab_min', 'slab_max'), CustomValidators.is_fixedValue()] }));
       });
-      this.formArr.push(new FormGroup({
-        id: new FormControl(key, [Validators.required]),
-        validCheck: new FormControl(false, [Validators.required]),
+      this.formArr.push(new UntypedFormGroup({
+        id: new UntypedFormControl(key, [Validators.required]),
+        validCheck: new UntypedFormControl(false, [Validators.required]),
         arr: innerFormArr
       }));
     }
@@ -198,17 +198,17 @@ export class CommCashdepositComponent implements OnInit {
   }
 
   getArr(arr: any, i: any): any {
-    return (<FormArray>arr.controls['arr'])
+    return (<UntypedFormArray>arr.controls['arr'])
   }
 
   add(pm: any, i: any) {
     // //console.log(this.getArr(pm, i).value);
     let leng: number = pm.controls['arr'].controls.length;
 
-    let val: number = +((pm.controls['arr'] as FormArray)?.controls[leng - 1] as FormGroup)?.controls['slab_max']?.value;
+    let val: number = +((pm.controls['arr'] as UntypedFormArray)?.controls[leng - 1] as UntypedFormGroup)?.controls['slab_max']?.value;
     //console.log(val);
 
-    let newUsergroup: FormGroup = this.fb.group({
+    let newUsergroup: UntypedFormGroup = this.fb.group({
       slab_min: [val + 1, [Validators.required]],
       slab_max: [null, [Validators.required]],
       value: [0, Validators.required],
@@ -223,7 +223,7 @@ export class CommCashdepositComponent implements OnInit {
   isAddBtnDisabled(arr: any, i: any) {
     let leng: number = arr.controls['arr'].controls.length;
 
-    let val: number = +((arr.controls['arr'] as FormArray)?.controls[leng - 1] as FormGroup)?.controls['slab_max']?.value;
+    let val: number = +((arr.controls['arr'] as UntypedFormArray)?.controls[leng - 1] as UntypedFormGroup)?.controls['slab_max']?.value;
 
     if (val >= 10000) {
       return true;

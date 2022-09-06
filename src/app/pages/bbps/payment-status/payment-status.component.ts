@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router'; 
 import { ApiService } from 'src/app/service/api.service';
 
@@ -13,10 +13,10 @@ import Swal from 'sweetalert2';
 })
 export class PaymentStatusComponent implements OnInit {
 
-  form: any = FormGroup;
+  form: any = UntypedFormGroup;
   fetchBill:any = null;
   constructor(private auth: ApiService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private route: ActivatedRoute) { 
       this.form = this.fb.group({
         ref: ['', [Validators.required]], 

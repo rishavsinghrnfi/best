@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, UntypedFormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Select2OptionData } from 'ng-select2';
 import { Options } from 'select2';
 import { ApiService } from 'src/app/service/api.service';
@@ -23,7 +23,7 @@ export class BillpaycommComponent implements OnInit {
 
   itemFilter: boolean = true;
   searchInp: string = '';
-  constructor(private fb: FormBuilder, private _auth: ApiService) {
+  constructor(private fb: UntypedFormBuilder, private _auth: ApiService) {
 
   }
 

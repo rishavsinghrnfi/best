@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
 import { Router } from '@angular/router';
 import { config } from 'src/app/service/config'; 
@@ -12,14 +12,14 @@ import { LoaderService } from 'src/app/_helpers/common/loader.service';
   styleUrls: ['./payment-gateway.component.css']
 })
 export class PaymentGatewayComponent implements OnInit {
-  form: any = FormGroup;  
+  form: any = UntypedFormGroup;  
   fillCardDetails: boolean = false;
   private isPgDetail: boolean = true;
   private pageUrl:string = 'http://localhost:4200/#/redirect'
   is_active: boolean = true;
   constructor(
     private auth:ApiService,
-		private fb: FormBuilder,
+		private fb: UntypedFormBuilder,
     private route: Router,
     private loader:LoaderService,
     ) { 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Select2OptionData } from 'ng-select2';
 import { ApiService } from 'src/app/service/api.service';
@@ -17,7 +17,7 @@ declare var $: any;
 })
 export class AadhaarPayComponent implements OnInit { 
 	bankList: any;
-	aadharPay: any = FormGroup;
+	aadharPay: any = UntypedFormGroup;
 	bLinsting: any = [];
 	bankLisitng: Array<Select2OptionData> = [];
 	longitute: string = '';
@@ -39,7 +39,7 @@ export class AadhaarPayComponent implements OnInit {
   constructor(
     private _auth: ApiService,
     private scanner: ScannersService,
-		private fb: FormBuilder,
+		private fb: UntypedFormBuilder,
 		private route: ActivatedRoute,
 		private aadharValidation: AadharValidationService,
 		private routes: Router, 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Select2OptionData } from 'ng-select2';
 import { Options } from 'select2';
 import { ApiService } from 'src/app/service/api.service';
@@ -14,11 +14,11 @@ import Swal from 'sweetalert2';
 export class AddRateComponent implements OnInit {
   userLisitng: Array<Select2OptionData> = [];
   options: Options;
-  form: any = FormGroup;
+  form: any = UntypedFormGroup;
   userid: any;
   constructor(
     private auth: ApiService,
-    private fb: FormBuilder
+    private fb: UntypedFormBuilder
   ) {
     this.form = this.fb.group({
       usertype: ['', [Validators.required]],

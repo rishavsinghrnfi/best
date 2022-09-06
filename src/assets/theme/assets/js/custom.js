@@ -132,3 +132,13 @@ function GetIEVersion() {
     else
         return 0; //It is not IE
 }
+
+const signUpButton = document.getElementById('signUp');
+const signInButton = document.getElementById('signIn');
+const section = document.getElementById('section');
+
+signUpButton.addEventListener('click', () =>
+section.classList.add('right-panel-active'));
+
+signInButton.addEventListener('click', () =>
+section.classList.remove('right-panel-active'));

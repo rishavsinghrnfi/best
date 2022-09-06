@@ -34,7 +34,7 @@ export class HttpRequestInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
       this.requests.push(req);
       let headers = new HttpHeaders({
-        // 'Authkey': 'MWQyMmUzNWY4YjhlNjY2NWJjM2EzZjY0NjNhZWM0ZTk=',
+          'authkey': 'xygTdU7cfR1gT=bY2bY9Jg8KsdhTfr3L',
         // 'Authtoken': this.auth.isLoggedIn()
         // 'Token': this.auth.isChangepass()
       })

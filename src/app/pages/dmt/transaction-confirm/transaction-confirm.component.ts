@@ -3,7 +3,7 @@ import { EncodeDecode } from 'src/app/_helpers/encode-decode';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { config } from 'src/app/service/config';
 import { CommonService } from 'src/app/_helpers/common/common.service';
 import { RiCustomMdlService } from 'src/app/_helpers/common/custome-modal/ri-custom-mdl/ri-custom-mdl.service';
@@ -23,7 +23,7 @@ export class TransactionConfirmComponent implements OnInit {
   dmtLoginInfo: any = null;
   dmtTransaction: any = null;
   isLoggedin: boolean = true;
-  form: any = FormGroup;
+  form: any = UntypedFormGroup;
   transfer_type: string = 'IMPS';
   wallet: string = '';
   getResult: boolean = false;
@@ -31,7 +31,7 @@ export class TransactionConfirmComponent implements OnInit {
   invoiceObj: any = [];
   mdlId: any = 'testRecipt';
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private common: CommonService,
     private auth: ApiService,
     private route: Router,

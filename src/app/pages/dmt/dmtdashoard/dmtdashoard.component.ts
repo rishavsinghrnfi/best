@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Select2OptionData } from 'ng-select2';
 import { parse } from 'path';
@@ -63,7 +63,7 @@ export class DmtdashoardComponent implements OnInit {
 
   public viewtable: boolean = false;
   // dtOptions: DataTables.Settings = {};
-  form: any = FormGroup;
+  form: any = UntypedFormGroup;
   dob: any = '';
   bank: any = '';
   bankLisitng: Array<Select2OptionData> = [];
@@ -83,7 +83,7 @@ export class DmtdashoardComponent implements OnInit {
 
   isPinBoxShwo: boolean = false;
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private auth: ApiService,
     private route: Router,
   ) {

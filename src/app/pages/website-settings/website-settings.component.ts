@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { config } from 'src/app/service/config';
@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./website-settings.component.css']
 })
 export class WebsiteSettingsComponent implements OnInit {
-  form:any=FormGroup;
+  form:any=UntypedFormGroup;
   settings:any;
   portal_title:any;
   mob_no1:any;
@@ -22,7 +22,7 @@ export class WebsiteSettingsComponent implements OnInit {
   constructor(
     private api: ApiService,
     private auth: ApiService,
-    private fb: FormBuilder, 
+    private fb: UntypedFormBuilder, 
     private router:Router
     ) {
     this.form = this.fb.group({

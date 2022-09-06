@@ -42,7 +42,7 @@ export class AppComponent implements OnInit {
         }
       }
     })
-    $('body').addClass('themecolor2');
+    $('body').addClass('themecolor4');
   }
   ngOnInit() { 
     

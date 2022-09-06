@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { config } from 'src/app/service/config';
@@ -16,14 +16,14 @@ import { Select2OptionData } from 'ng-select2';
 })
 export class RegistrationComponent implements OnInit {
 	gstStateList: Array<Select2OptionData> = [];
-  form: any = FormGroup;
+  form: any = UntypedFormGroup;
   dob: any = '';
   minDate!: Date;
   maxDate!: Date;
   mobile: string = "";
   dmtInfo: any = null;
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private _auth: ApiService,
     private route: Router,
     private datepipe: DatePipe

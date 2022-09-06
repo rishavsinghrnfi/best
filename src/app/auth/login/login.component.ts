@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from "@angular/forms";
+import { FormGroup, UntypedFormBuilder, Validators, FormControl } from "@angular/forms";
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { config } from 'src/app/service/config';
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   error = '';
   message = '';
   submitted = false;
-  logindata: any = FormBuilder;
+  logindata: any = UntypedFormBuilder;
   title = '';
   longitute: string = '';
   latitute: string = '';
@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
   isConnected = true;
   constructor(
     private route: Router,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private _auth: ApiService,
     private connectionService: ConnectionService,
     private _UserLoginDtlService: UserLoginDtlService,
@@ -54,25 +54,25 @@ export class LoginComponent implements OnInit {
     this.logindata = this.fb.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
-      isagreed: ['', [Validators.required]]
+      isagreed: ['1', [Validators.required]]
     });
 
   }
 
   ngOnInit(): void {
-    this._auth.validDomian((domainSettings: any) => {
-      this.heading = domainSettings.heading;
-      this.title = domainSettings.heading;
-      this.desc = domainSettings.desc;
-      this.logo = domainSettings.logo;
-    });
-    setTimeout(() => {
-      this.myDate =  this.getDate();
-     }, 1000);
-     setInterval(() =>{
-       const currentDate = new Date();
-       this.date = currentDate.toLocaleTimeString();
-        }, 1000);
+    // this._auth.validDomian((domainSettings: any) => {
+    //   this.heading = domainSettings.heading;
+    //   this.title = domainSettings.heading;
+    //   this.desc = domainSettings.desc;
+    //   this.logo = domainSettings.logo;
+    // });
+    // setTimeout(() => {
+    //   this.myDate =  this.getDate();
+    //  }, 1000);
+    //  setInterval(() =>{
+    //    const currentDate = new Date();
+    //    this.date = currentDate.toLocaleTimeString();
+    //     }, 1000);
 
     this.getLocation();
 
@@ -106,20 +106,15 @@ export class LoginComponent implements OnInit {
           title: 'Please allow the Location access! and You May Not Connected To Internet',
         })
       } else {
-        //this.submitted = true; 
-        // const formdata = new FormData();
-        // formdata.append('username', this.logindata.get('username').value);
-        // formdata.append('password', this.logindata.get('password').value);
-        // formdata.append('token', config.tokenauth);
-        // formdata.append('latitude', this.latitute);
-        // formdata.append('longitude', this.longitute);
+        this.submitted = true; 
+        const formdata = new FormData();
+        formdata.append('username', this.logindata.get('username').value);
+        formdata.append('password', this.logindata.get('password').value); 
+        formdata.append('latitude', this.latitute);
+        formdata.append('longitude', this.longitute);
 
-        const logIn ={
-            email:    this.logindata.get('username').value,
-            password: this.logindata.get('password').value
-        }
-        //this.loading = true;
-        this._auth.postdata(logIn, config.login).subscribe((res: any) => {
+        
+        this._auth.postdata(formdata, config.login).subscribe((res: any) => {
           if (res.response == 2001) {
             if (res.firstlogin == 0) {
               // let decode: any = EncodeDecode(JSON.stringify(res), 'n');
@@ -161,13 +156,13 @@ export class LoginComponent implements OnInit {
   } */
   moveFocus() {
     const otpList = this.model.getOtp();
-    if (otpList.length == 4) {
+    if (otpList.length == 6) {
       const formdata = new FormData();
       formdata.append('username', this.logindata.get('username').value);
       formdata.append('password', this.logindata.get('password').value);
-      formdata.append('token', config.tokenauth);
-      formdata.append('latitude', this.latitute);
-      formdata.append('longitude', this.longitute);
+      // formdata.append('token', config.tokenauth);
+      // formdata.append('latitude', this.latitute);
+      // formdata.append('longitude', this.longitute);
       formdata.append('otp', otpList);
       this._auth.postdata(formdata, config.verify).subscribe((res: any) => {
         if (res.response == 200) {

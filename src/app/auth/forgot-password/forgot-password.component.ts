@@ -1,5 +1,5 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { config } from 'src/app/service/config';
@@ -15,13 +15,13 @@ import { EncodeDecode } from 'src/app/_helpers/encode-decode';
 })
 export class ForgotPasswordComponent implements OnInit {
   @ViewChild(CustomModelComponent) model!: CustomModelComponent;
-  forgotPass: any = FormGroup;
+  forgotPass: any = UntypedFormGroup;
   longitute: string = '';
   latitute: string = '';
   submitted:boolean=true;
   constructor(
     private route: Router,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private _auth: ApiService,
   ) { 
 
@@ -50,17 +50,18 @@ export class ForgotPasswordComponent implements OnInit {
         title: 'Please allow the Location access! and You May Not Connected To Internet',
       })
     } else {
-      //this.submitted = true; 
+      this.submitted = true; 
       const formdata = new FormData();
       formdata.append('username', this.forgotPass.get('username').value);
-      formdata.append('token', config.tokenauth);
-      formdata.append('latitude', this.latitute);
-      formdata.append('longitude', this.longitute);
-      //this.loading = true;
+      // formdata.append('token', config.tokenauth);
+      // formdata.append('latitude', this.latitute);
+      // formdata.append('longitude', this.longitute); 
+
+      
       this._auth.postdata(formdata, config.forgotpasswordSentOtp).subscribe((res: any) => {
         if (res.response == 200) {
           this.model.showModal = true;
-        } else {
+          } else {
           Swal.fire({
             icon: 'error',
             title: res.message
@@ -74,13 +75,14 @@ export class ForgotPasswordComponent implements OnInit {
 
   moveFocus() {
     const otpList = this.model.getOtp();
-    if (otpList.length == 4) {
+    if (otpList.length == 6) {
       const formdata = new FormData();
       formdata.append('username', this.forgotPass.get('username').value);
-      formdata.append('token', config.tokenauth);
-      formdata.append('latitude', this.latitute);
-      formdata.append('longitude', this.longitute);
+      // formdata.append('token', config.tokenauth);
+      // formdata.append('latitude', this.latitute);
+      // formdata.append('longitude', this.longitute);
       formdata.append('otp', otpList);
+ 
       this._auth.postdata(formdata, config.forgotpasswordVerifyOtp).subscribe((res: any) => {
         if(res.response == 200) {
           let decode: any = EncodeDecode(JSON.stringify(res), 'n');

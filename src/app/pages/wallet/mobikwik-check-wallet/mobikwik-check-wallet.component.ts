@@ -1,6 +1,6 @@
 import { ApiService } from 'src/app/service/api.service';
 import { CustomModelComponent } from 'src/app/_helpers/custom-model/custom-model.component';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
@@ -15,11 +15,11 @@ import { EncodeDecode } from 'src/app/_helpers/encode-decode';
 })
 export class MobikwikCheckWalletComponent implements OnInit {
   @ViewChild(CustomModelComponent) model!:CustomModelComponent;
-  form: any = FormGroup;
+  form: any = UntypedFormGroup;
   formdata: any;
   constructor(
     private _auth: ApiService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private route: Router
   ) {
     this.form = this.fb.group({

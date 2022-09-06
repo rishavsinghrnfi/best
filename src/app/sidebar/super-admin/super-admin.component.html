@@ -1,51 +1,92 @@
 <ul class="list-unstyled menu-categories" id="accordionExample">
-    <li class="menu">
-        <a routerLink="dashboard" aria-expanded="true" class="dropdown-toggle">
-            <div class="">
-                <span>Dashbaord</span>
-            </div>
-        </a>
-    </li>
-    <li class="menu">
-        <a href="#account" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-            <div class="">
-                <span>Account</span>
-            </div>
-            <div>
-            </div>
-        </a>
-        <ul class="collapse submenu list-unstyled" id="account" data-parent="#accordionExample">
-            
-            <li>
-                <a href="#"> User</a>
-            </li>
-        </ul>
-    </li>
-     
-     
 
-   
-    <li class="menu">
-        <a href="#fund" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-            <div class="">
-                <span>Fund</span>
-            </div>
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-            </div>
-        </a>
-        <ul class="collapse submenu list-unstyled" id="fund" data-parent="#accordionExample">
-             
-        </ul>
-    </li>
-    <li class="menu">
-        <a  href="#" class="dropdown-toggle">
-            <div class="">
-                <span>Permission</span>
-            </div>
-        </a>
-    </li> 
+  <li class="menu">
+    <a routerLink="dashboard" aria-expanded="true" class="dropdown-toggle">
+      <div class="">
+        <span>Dashboard</span>
+      </div>
+    </a>
+  </li>
+  <li class="menu">
+    <a href="#services" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+      <div class="">
+        <span>Services</span>
+      </div>
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="feather feather-chevron-right">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </div>
+    </a>
+    <ul class="collapse submenu list-unstyled" id="services" data-parent="#accordionExample">
 
+    </ul>
+  </li>
+  <li class="menu">
+    <a href="#values" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+      <div class="">
+        <span>Values</span>
+      </div>
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="feather feather-chevron-right">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </div>
+    </a>
+    <ul class="collapse submenu list-unstyled" id="values" data-parent="#accordionExample">
+
+      <li>
+        <a href="#"> User</a>
+      </li>
+    </ul>
+  </li>
+  <li class="menu">
+    <a href="#transcations" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+      <div class="">
+        <span>Transcations</span>
+      </div>
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="feather feather-chevron-right">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </div>
+    </a>
+    <ul class="collapse submenu list-unstyled" id="transcations" data-parent="#accordionExample">
+
+      <li>
+        <a href="#"> User</a>
+      </li>
+    </ul>
+  </li>
+
+  <li class="menu">
+    <a href="#" class="dropdown-toggle">
+      <div class="">
+        <span>Support</span>
+      </div>
+    </a>
+  </li>
+  <li class="menu">
+    <a href="#" class="dropdown-toggle">
+      <div class="">
+        <span>QR Code</span>
+      </div>
+    </a>
+  </li>
+  <li class="menu">
+    <a href="#" (click)="logout()" class="dropdown-toggle">
+      <div class="">
+        <span>Logout</span>
+      </div>
+    </a>
+  </li>
 </ul>
+
+
+

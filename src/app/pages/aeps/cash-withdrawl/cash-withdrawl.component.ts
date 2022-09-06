@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Select2OptionData } from 'ng-select2';
 import { Options } from 'select2';
@@ -18,7 +18,7 @@ declare var $: any;
 })
 export class CashWithdrawlComponent implements OnInit {
 	@Input() bankList: any;
-	cashwithdrawl: any = FormGroup;
+	cashwithdrawl: any = UntypedFormGroup;
 	bank: any = '';
 	bankLisitng: Array<Select2OptionData> = [];
 	longitute: string = '';
@@ -40,7 +40,7 @@ export class CashWithdrawlComponent implements OnInit {
 	constructor(
 		private _auth: ApiService,
         private scanner: ScannersService,
-		private fb: FormBuilder,
+		private fb: UntypedFormBuilder,
 		private route: ActivatedRoute,
 		private aadharValidation: AadharValidationService,
 		private routes: Router,

@@ -1,5 +1,5 @@
 import { Component, OnInit  } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { config } from 'src/app/service/config';
@@ -12,15 +12,15 @@ import { Location } from '@angular/common'
   styleUrls: ['./complaint-chat.component.css']
 })
 export class ComplaintChatComponent implements OnInit {
-  form: any = FormGroup;
-  form1: any = FormGroup;
+  form: any = UntypedFormGroup;
+  form1: any = UntypedFormGroup;
   private chatId: any = '';
   public chatDetail: any = [];
   chatuserdetails:any =[];
   constructor(
     private _activatedRoute: ActivatedRoute,
     private auth: ApiService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private location:Location
     ) {
      

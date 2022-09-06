@@ -6,7 +6,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./custom-model.component.css']
 })
 export class CustomModelComponent implements OnInit {
-  @Input() length:number = 4; 
+  @Input() length:number = 6; 
   @Input() resend:boolean = true;  
   otp = {
     input1: '',

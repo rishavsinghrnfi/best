@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
 import { config } from 'src/app/service/config';
 import Swal from 'sweetalert2';
@@ -16,17 +16,17 @@ export class CommLicBillpayComponent implements OnInit {
   showData: boolean = false;
   data: any;
   val: any = '';
-  public mainForm: FormGroup;
+  public mainForm: UntypedFormGroup;
   userId: any;
 
-  constructor(private fb: FormBuilder, private _auth: ApiService, private elementRef: ElementRef) {
-    this.mainForm = new FormGroup({
-      value: new FormControl(null, [Validators.required, Validators.min(0)])
+  constructor(private fb: UntypedFormBuilder, private _auth: ApiService, private elementRef: ElementRef) {
+    this.mainForm = new UntypedFormGroup({
+      value: new UntypedFormControl(null, [Validators.required, Validators.min(0)])
     });
   }
 
   get getVal() {
-    return this.mainForm.controls['value'] as FormControl;
+    return this.mainForm.controls['value'] as UntypedFormControl;
   }
 
   ngOnInit(): void {

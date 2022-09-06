@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { config } from 'src/app/service/config'; 
 import { CustConfg } from 'src/app/_helpers/common/custom-datepicker/ngx-datePicker-CustConfg';
 import { DataTableToolsComponent } from 'src/app/_helpers/data-table-tools/data-table-tools.component';
@@ -13,7 +13,7 @@ import { DataTableToolsComponent } from 'src/app/_helpers/data-table-tools/data-
 export class ListComplaintComponent implements OnInit {
 @ViewChild('rangePicker') rangePicker:any;
 @ViewChild(DataTableToolsComponent) dt!:DataTableToolsComponent;
-form!:FormGroup;
+form!:UntypedFormGroup;
 search:any = {startdate:"",enddate:""};
 maxDate!: Date;
 minDate!: Date;
@@ -54,8 +54,8 @@ bsCustConfg = CustConfg;
     }
   ];
   constructor(){
-    this.form = new FormGroup({
-      selectdate: new FormControl([new Date(),new Date()], [Validators.required]), 
+    this.form = new UntypedFormGroup({
+      selectdate: new UntypedFormControl([new Date(),new Date()], [Validators.required]), 
     })
   }
   ngOnInit(): void { 

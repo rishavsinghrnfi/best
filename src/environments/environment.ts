@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   // apiBaseUrl: 'https://pigopay.in/api/api/v1/'
   // apiBaseUrl: 'https://uiplservice.in/api/api/v1/'
-  apiBaseUrl: 'https://uat.bestapi.co/api/v1/api/'
+  apiBaseUrl: 'https://uat.bestapi.co/lumen_app/'
 
 };
 

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-custom-otp',
@@ -22,10 +22,10 @@ export class CustomOtpComponent implements OnInit {
   
   @Input() showMesgOtpSendToMobile: any = null;   //show mesg send to mobile
 
-  code!: FormArray;
+  code!: UntypedFormArray;
 
   count: any;
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: UntypedFormBuilder) {
 
   }
   checkit() {
@@ -44,7 +44,7 @@ export class CustomOtpComponent implements OnInit {
     this.code = this.fb.array(controls);
   }
   getket(key: any) {
-    return (<FormArray>this.code).controls[key] as FormControl;
+    return (<UntypedFormArray>this.code).controls[key] as UntypedFormControl;
   }
   numberOnly(event: any, lastItem?: any): boolean {
     const charCode = (event.which) ? event.which : event.keyCode;

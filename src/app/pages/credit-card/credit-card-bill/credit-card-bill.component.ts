@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../../service/api.service';
 import * as cardValidator from "card-validator";
 import { config } from 'src/app/service/config';
@@ -17,7 +17,7 @@ export class CreditCardBillComponent implements OnInit {
   typeCrad: any;
   Paydata: any = [];
   refId: any;
-  form!: FormGroup
+  form!: UntypedFormGroup
   firstPage: boolean = true;
   getData: boolean = false;
   secondPage: boolean = false;
@@ -27,7 +27,7 @@ export class CreditCardBillComponent implements OnInit {
   data: any;
 
   mdlId: any = 'testRecipt';
-  constructor(private fb: FormBuilder, private auth: ApiService,
+  constructor(private fb: UntypedFormBuilder, private auth: ApiService,
     private route: Router,
     private _RiCustomMdlService: RiCustomMdlService) {
     this.form = this.fb.group({

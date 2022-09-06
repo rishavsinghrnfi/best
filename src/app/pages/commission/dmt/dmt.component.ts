@@ -1,5 +1,5 @@
 import { Component, NgModule, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormControl, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
 import { Select2OptionData } from 'ng-select2';
 import { ApiService } from 'src/app/service/api.service';
 import { config } from 'src/app/service/config';
@@ -21,22 +21,22 @@ export class DmtComponent implements OnInit {
   userDtLst: any;
   data: any;
 
-  mainForm: FormGroup;
-  formArr = new FormArray([]);
+  mainForm: UntypedFormGroup;
+  formArr = new UntypedFormArray([]);
   userId: any;
   titkl = 100;
 
-  testFm: FormGroup = new FormGroup({});
+  testFm: UntypedFormGroup = new UntypedFormGroup({});
 
-  testArr = new FormArray([]);
+  testArr = new UntypedFormArray([]);
   list: any = [];
   showData: boolean = false;
   constructor(private _auth: ApiService) {
-    this.mainForm = new FormGroup({
+    this.mainForm = new UntypedFormGroup({
       'formArr': this.formArr
     });
 
-    this.testFm = new FormGroup({
+    this.testFm = new UntypedFormGroup({
       'slotArr': this.testArr
     })
 
@@ -53,9 +53,9 @@ export class DmtComponent implements OnInit {
   }
 
   createFm(obj: any) {
-    this.testArr = new FormArray([]);
+    this.testArr = new UntypedFormArray([]);
 
-    this.testFm = new FormGroup({
+    this.testFm = new UntypedFormGroup({
       'slotArr': this.testArr
     })
 
@@ -66,7 +66,7 @@ export class DmtComponent implements OnInit {
     let num = 0;
     let additional = 0;
     for (const key in obj[0]) {
-      let innerArr = new FormArray([]);
+      let innerArr = new UntypedFormArray([]);
 
 
       let item: any = {};
@@ -95,10 +95,10 @@ export class DmtComponent implements OnInit {
           }
           const element = obj[index][key];
 
-          innerArr.push(new FormGroup({
-            'slab_title': new FormControl(to + ' to ' + fo),
-            'slab_name': new FormControl(key),
-            'slab_value': new FormControl(+element, [Validators.required, CustomValidators.validateCommMinAndMax()]),
+          innerArr.push(new UntypedFormGroup({
+            'slab_title': new UntypedFormControl(to + ' to ' + fo),
+            'slab_name': new UntypedFormControl(key),
+            'slab_value': new UntypedFormControl(+element, [Validators.required, CustomValidators.validateCommMinAndMax()]),
           }))
 
           // item['slot' + '-' + index + '_' + key] = obj[index][key];
@@ -114,14 +114,14 @@ export class DmtComponent implements OnInit {
         item['max_charges'] = max_Obj['max_charges' + num];
         this.list.push(item);
         additional = additional + 1000;
-        innerArr.push(new FormGroup({
-          'slab_title': new FormControl('Additional-' + additional),
-          'slab_name': new FormControl('max_charges'),
-          'slab_value': new FormControl(max_Obj['max_charges' + num], [Validators.required, CustomValidators.validateCommMinAndMax()]),
+        innerArr.push(new UntypedFormGroup({
+          'slab_title': new UntypedFormControl('Additional-' + additional),
+          'slab_name': new UntypedFormControl('max_charges'),
+          'slab_value': new UntypedFormControl(max_Obj['max_charges' + num], [Validators.required, CustomValidators.validateCommMinAndMax()]),
         }))
 
-        this.testArr.push(new FormGroup({
-          'slab_row_value': new FormControl(num),
+        this.testArr.push(new UntypedFormGroup({
+          'slab_row_value': new UntypedFormControl(num),
           arr: innerArr
         }));
       }
@@ -132,11 +132,11 @@ export class DmtComponent implements OnInit {
 
 
   get slotArrx() {
-    return ((this.testFm as FormGroup).controls['slotArr'] as FormArray).controls;
+    return ((this.testFm as UntypedFormGroup).controls['slotArr'] as UntypedFormArray).controls;
   }
 
   getArrss(arr: any, i: any): any {
-    return (<FormArray>arr.controls['arr']);
+    return (<UntypedFormArray>arr.controls['arr']);
   }
 
   getServerResponse(val: any) {

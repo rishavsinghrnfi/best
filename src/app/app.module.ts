@@ -179,6 +179,7 @@ import { RetailerNotificationComponent } from './pages/retailer-notification/ret
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { AngularEditorModule } from '@kolkov/angular-editor'; 
 import { WebsiteSettingsComponent } from './pages/website-settings/website-settings.component';
+import { FormComponent } from './pages/form/form.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -342,7 +343,7 @@ import { WebsiteSettingsComponent } from './pages/website-settings/website-setti
     FocusToNextInputDirective, 
     MobikwikCheckWalletComponent,
     MobikwikCheckoutWalletComponent, 
-    RetailerNotificationComponent, WebsiteSettingsComponent
+    RetailerNotificationComponent, WebsiteSettingsComponent, FormComponent
     
   ],
   imports: [
